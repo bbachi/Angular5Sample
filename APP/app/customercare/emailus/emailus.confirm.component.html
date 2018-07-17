@@ -1,0 +1,23 @@
+<section id="contentWrapper">
+		<h1 class="pageHeader">Email Us Confirmation</h1>
+		<p>Your request was sent. You will receive an automated email response shortly. Our most important goal at Green Mountain Energy is to provide you with service you can count on. With the information you have provided, we hope to resolve your request to your satisfaction.</p>
+		<div class="infoHolder mT3P">
+					<div>
+						<div class="label">Email sent on:</div>
+						<div class="data">{{(confirm$ | async)?.txnDateAndTime}}</div>
+					</div>
+					<div>
+						<div class="label">Reply email will be sent to:</div>
+						<div class="data">{{(confirm$ | async)?.email}}</div>
+					</div>
+					<div class="mT3P">
+						<div class="label">Subject:</div>
+						<div class="data">{{(confirm$ | async)?.subject}}</div>
+					</div>
+					<div>
+						<div class="label">Comments:</div>
+						<div class="data">{{(confirm$ | async)?.comments}}</div>
+					</div>
+		</div>
+		<gme-print title="Email Us Confirmation"></gme-print>
+</section>

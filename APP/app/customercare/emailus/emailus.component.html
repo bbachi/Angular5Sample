@@ -1,0 +1,71 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Email Us</h1>
+
+		<p>Use our email form below to submit your email. Information you provide is strictly confidential. This information will not be given, sold or shared with any person or organization external to Green Mountain Energy. See our <a href="https://www.greenmountainenergy.com/privacy-policy/" target="_blank">privacy statement</a> for more details. You can also view our <a routerLink="/protected/customer/cc/faqs.htm">FAQs</a> to find answers to your questions.</p>
+
+		<form name="addUserFrm" id="addUserFrm" [formGroup]="ccForm" autocomplete="off" novalidate (ngSubmit)="sendEmail(ccForm.value)">
+			<div class="infoHolder mT3P">
+						<div class="width70Per">
+							<div>
+								<div class="split inlineBlock">
+									<label for="emailAddress">Email Address</label>
+									<input type="text" formControlName="emailAddress" name="emailAddress" [ngClass]="{'bordercls':emailsMismatch}" placeholder="smith@email.com"/>
+									<p *ngIf="(isFormNotValid && ccForm.get('emailAddress').untouched) || (ccForm.get('emailAddress').touched &&
+									ccForm.get('emailAddress')?.errors &&
+									ccForm.get('emailAddress')?.errors?.required)"><span class="errorMsg">Email Address is required.</span></p>
+									<p *ngIf="ccForm.get('emailAddress').touched &&
+									ccForm.get('emailAddress')?.errors &&
+									ccForm.get('emailAddress')?.errors?.pattern"><span class="errorMsg">Email Address is not valid.</span></p>
+								</div>
+							</div>
+							<div class="mT3P">
+									<label for="reEmailAddress">Re-Type Email Address</label>
+									<input type="text" formControlName="reEmailAddress" name="reEmailAddress" [ngClass]="{'bordercls':emailsMismatch}" placeholder="smith@email.com"/>
+									<p *ngIf="(isFormNotValid && ccForm.get('reEmailAddress').untouched) || (ccForm.get('reEmailAddress').touched &&
+									ccForm.get('reEmailAddress')?.errors &&
+									ccForm.get('reEmailAddress')?.errors?.required)"><span class="errorMsg">Re-Type Email Address is required.</span></p>
+									<p *ngIf="ccForm.get('reEmailAddress').touched &&
+									ccForm.get('reEmailAddress')?.errors &&
+									ccForm.get('reEmailAddress')?.errors?.pattern"><span class="errorMsg">Email Address is not valid.</span></p>
+							</div>
+						</div>
+						<div class="subheader">Your message to Green Mountain Energy:</div>
+						<div class="greyLineSeperator">&nbsp;</div>
+
+							<div>
+									<label for="subject">Subject</label>
+									<select id="subject"  formControlName="subject" class="inboxEqual">
+										  <option value="Activity Reports">Activity Reports</option>
+										  <option value="Billing and Invoicing">Billing and Invoicing</option>
+										  <option value="Builder Turn Down">Builder Turn Down</option>
+										  <option value="Change of Contracts">Change of Contracts</option>
+										  <option value="CSA (issues, requests, reports">CSA (issues, requests, reports</option>
+										  <option value="General Account Information">General Account Information</option>
+										  <option value="Marketing Agreement Reports">Marketing Agreement Reports</option>
+										  <option value="Marketing Materials">Marketing Materials</option>
+										  <option value="Pricing Requests">Pricing Requests</option>
+										  <option value="Remittance/Payment Issues">Remittance/Payment Issues</option>
+										  <option value="Residential Enrollments">Residential Enrollments</option>
+										  <option value="Start/Stop Forms">Start/Stop Forms</option>
+										  <option value="Status of Request">Status of Request</option>
+										  <option value="Tax issues">Tax issues</option>
+										  <option value="Other">Other</option>
+									</select>
+							</div>
+							<div class="mT1P">
+									<label for="comments">Comments</label>
+									<textarea id="comments" formControlName="comments" name="comments" rows="10" class="fullwidth"></textarea>
+									<p *ngIf="(isFormNotValid && ccForm.get('comments').untouched) || (ccForm.get('comments').touched &&
+									ccForm.get('comments')?.errors &&
+									ccForm.get('comments').errors?.required)"><span class="errorMsg">Comments is required.</span></p>
+							</div>
+			</div>
+			<gme-error *ngIf="emailsMismatch" errorMessage="Email address must match in both fields."></gme-error>
+			<div id="buttonHolder" class="text-right">
+				<button type="submit" class="blue">Send Email</button>
+			</div>
+		</form>
+		<!--<sdl-message key=""></sdl-message> -->
+	</div>
+</section>

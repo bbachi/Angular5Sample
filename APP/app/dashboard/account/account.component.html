@@ -1,0 +1,29 @@
+<div class="padding3Per mT3P">
+  <h1 class="pageHeader">Account</h1>
+  <div class="tableInfo">
+      <div class="infoRow">
+        <div class="infoColumn">Deposit Amount:</div>
+        <div class="infoColumn">
+          <a (click)="onDepositAmount()" *ngIf="!depositAmountClicked" class="depositAmountCAA">View Deposit Amount</a>
+          <loading-indicator *ngIf="(depositAmount$ | async)?.isLoading"></loading-indicator>
+          <ng-container *ngIf="(depositAmount$ | async)?.isLoadingSuccess">{{(depositAmount$ | async)?.value}}</ng-container>
+        </div>
+      </div>
+      <div class="infoRow" *ngIf="userCategory == 'I'">
+        <div class="infoColumn">Terms:</div>
+        <div class="infoColumn">{{terms | notprovided}}</div>
+      </div>
+      <div class="infoRow">
+        <div class="infoColumn">City/State Tax Status:</div>
+        <div class="infoColumn">
+          <a (click)="onTaxStatus()" *ngIf="!taxStatusClicked" class="depositAmountCAA">View City/State Tax Status</a>
+          <loading-indicator *ngIf="(taxStatus$ | async)?.isLoading"></loading-indicator>
+          <ng-container *ngIf="(taxStatus$ | async)?.isLoadingSuccess">{{(taxStatus$ | async)?.value}}</ng-container>
+        </div>
+      </div>
+      <div class="infoRow" *ngIf="userCategory == 'I'">
+        <div class="infoColumn">Contract Expiration Date:</div>
+        <div class="infoColumn">{{contractExpDate | notprovided}}</div>
+      </div>
+  </div>
+</div>

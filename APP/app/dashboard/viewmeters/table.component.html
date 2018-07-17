@@ -1,0 +1,28 @@
+<div class="mT3P">
+  <gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+  <div id="tableHolder">
+    <table id="transactionTbl" sortable-table (sorted)="onSorted($event)">
+      <thead>
+        <tr>
+          <th sortable-column="esiid" sort-direction="asc">ESIID</th>
+          <th sortable-column="strStreetNum">Address</th>
+          <th sortable-column="strUnitNumber">Unit/Property</th>
+          <th sortable-column="strCity">City</th>
+          <th sortable-column="strZipcode">Zip</th>
+          <th sortable-column="strTaxStatus">City/State Tax Status</th>
+        </tr>
+      </thead>
+      <tbody id="transTbody">
+          <tr *ngFor="let esiid of esiidList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+            <td>{{esiid.esiid}}</td>
+            <td>{{esiid.strStreetNum}} {{esiid.strStreetName}}</td>
+            <td>{{esiid.strUnitNumber}}</td>
+            <td>{{esiid.strCity}}</td>
+            <td>{{esiid.strZipcode}}</td>
+            <td>{{esiid.strTaxStatus}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+</div>

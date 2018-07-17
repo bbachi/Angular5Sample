@@ -1,0 +1,14 @@
+<section *ngIf="!hideImage" id="customerInfoSec">
+  <div class="selectedInfosec">
+    <div id="">Questions? Call 800-273-2135</div>
+    <div *ngIf="isSelectedPropertyExist" id="customerInfoBox">
+      <h1>Master Customer</h1>
+      <div id="customerName">{{masterBpName}}</div>
+      <h2>{{propertyName}}</h2>
+      <div>{{streetNumber}} {{streetName}}</div>
+      <div>{{city}}, {{state}} {{zipcode}}</div>
+      <div>{{phoneNumber | formatphone}}</div><br/>
+      <a *ngIf="!onlyOneProperty" (click)="changeProperty()">Change Property</a>
+    </div>
+    </div>
+</section>

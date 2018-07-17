@@ -1,0 +1,8 @@
+<div id="buttonHolder" class="padding3Per">
+  <button class="blue" (click)="onViewESIIDs()">View Meters/ ESI ID</button>
+</div>
+<loading-indicator *ngIf="(esiidList$ | async)?.isLoading; else showresult"></loading-indicator>
+<ng-template #showresult>
+  <gme-error *ngIf="(esiidList$ | async)?.esiidList?.length == 0" errorMessage="Uh, oh. We can't seem to find that information. Please call 1-800-273-2135, so that we can sort it out."></gme-error>
+  <esiid-meter-table *ngIf="(esiidList$ | async)?.esiidList?.length > 0" [esiidList]="(esiidList$ | async)?.esiidList"></esiid-meter-table>
+</ng-template>

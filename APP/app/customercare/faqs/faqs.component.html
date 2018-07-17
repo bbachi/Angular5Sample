@@ -1,0 +1,18 @@
+<section id="contentWrapper">
+  <div>
+    <h1 class="pageHeader b">FAQs</h1>
+    <loading-indicator *ngIf="(faqs$ | async)?.isLoading"></loading-indicator>
+    <ng-container *ngIf="(faqs$ | async)?.isLoadingSuccess && (faqs$ | async)?.faqs?.topics?.length > 0;">
+      <div *ngFor="let topic of (faqs$ | async)?.faqs?.topics;">
+        <div class="subheader mT3P" [innerHTML]="topic.title"></div>
+        <div class="greyBorder"></div>
+        <div *ngFor="let qa of topic.questions;"class="quesnanssection">
+            <gme-faq gmeFaqToggle [question]="qa.question" [answer]="qa.answer"></gme-faq>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="(faqs$ | async)?.isLoadingSuccess && !(faqs$ | async)?.faqs?.topics;">
+        <gme-error *ngIf="!(faqs$ | async)?.isLoading" errorMessage="No FAQs Available."></gme-error>
+    </ng-container>
+  </div>
+</section>

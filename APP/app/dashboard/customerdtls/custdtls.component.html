@@ -1,0 +1,17 @@
+<div class="greyBox">
+  <h1 class="pageHeader">Customer Details</h1>
+  <div class="tableInfo">
+    <field-name name="Customer Name" [value]="customerName"></field-name>
+    <field-name name="Customer Type" [value]="customerType"></field-name>
+    <field-name name="Status" [value]="customerStatus"></field-name>
+    <div class="mT3P">
+      <a *ngIf="(balancesAndPaymentsDue$ | async)?.ajaxNotCalled" (click)="onViewBalancesAndPaymentsDue()">View Balances and Payments Due</a>
+    </div>
+    <loading-indicator *ngIf="(balancesAndPaymentsDue$ | async)?.isLoading"></loading-indicator>
+    <ng-container *ngIf="(balancesAndPaymentsDue$ | async)?.isLoadingSuccess">
+      <field-name name="Balance Forward" [value]="(balancesAndPaymentsDue$ | async)?.data?.balanceForward"></field-name>
+      <field-name name="Current Charges" [value]="(balancesAndPaymentsDue$ | async)?.data?.currentBalance"></field-name>
+      <field-name name="Total Amount Due" [value]="(balancesAndPaymentsDue$ | async)?.data?.balanceDue"></field-name>
+    </ng-container>
+  </div>
+</div>

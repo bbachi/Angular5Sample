@@ -1,0 +1,16 @@
+<section id="contentWrapper">
+	<div class="width70Per">
+		<dashboard-custdtls
+			[balancesAndPaymentDue]="balancesAndPaymentDue"
+			(viewBalances)="onBalancesAndPaymentDue($event)"
+			[custDetails]="custDetails">
+		</dashboard-custdtls>
+		<dashboard-correspondence [custDetails]="custDetails"></dashboard-correspondence>
+		<dashboard-account [custDetails]="custDetails" [userCategory]="userCategory"></dashboard-account>
+  </div>
+	<dashboard-viewmeters></dashboard-viewmeters>
+	<div class="pL3P text-right">
+				<a target="_blank" routerLink="/protected/termsofuse.htm/dashboard">Terms of Use</a>
+				<!--<a (click)="termsOfUse()">Terms of Use</a> -->
+	</div>
+</section>

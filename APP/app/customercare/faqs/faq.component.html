@@ -1,0 +1,8 @@
+<div gmeFaqToggle class="quesnans">
+  <div (click)="onLinkClick()" class="question expandedLink">
+    <div class="questionText" [innerHTML]="question">?</div>
+      <div class="right" [ngClass]="{'openAnswer':isCollapsed,'closeAnswer':!isCollapsed}"></div>
+  </div>
+  <div [ngClass]="{'hide':isCollapsed}" class="answer"> <p [innerHTML]="answer">.</p></div>
+</div>
+<!-- collapsedLink -->
