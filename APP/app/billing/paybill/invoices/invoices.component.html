@@ -1,0 +1,17 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">View Current Bill</h1>
+		<gme-property-name [propertyName]="propertyName$ | async"></gme-property-name>
+		<p>For assistance, please call us at 800-273-2135.</p>
+		<loading-indicator *ngIf="(invoices$ | async)?.isLoading"></loading-indicator>
+		<div *ngIf="(invoices$ | async)?.isLoadingSuccess">
+				<ng-container *ngIf="(invoices$ | async)?.invoices?.structuralDetailsFound && (invoices$ | async)?.invoices?.arDetailsFound; else showErr">
+					<collective-invoice-table *ngIf="(invoices$ | async)?.invoices?.collectiveInvoices?.length > 0" (onPayBillClick)="onPayBill($event, 'C')" [collectiveInvoices]="(invoices$ | async)?.invoices.collectiveInvoices"></collective-invoice-table>
+					<!--<individual-invoice-table *ngIf="(invoices$ | async)?.invoices?.individualInvoices?.length > 0" (onPayBillClick)="onPayBill($event, 'I')" [individualInvoices]="(invoices$ | async)?.invoices.individualInvoices"></individual-invoice-table> -->
+				</ng-container>
+				<ng-template #showErr>
+					<gme-error errorMessage="No invoices found for this property."></gme-error>
+				</ng-template>
+		</div>
+</div>
+</section>

@@ -1,0 +1,30 @@
+<div class="infoHolder">
+  <div class="subheader mT3P">Bank Account Information</div>
+  <div class="greyLineSeperator">&nbsp;</div>
+  <div *ngIf="!fromPCI">
+    <div class="split inlineBlock infoHolder">
+      <div class="label">Payment Method:</div>
+      <div class="data">{{nickName}}, {{maskedBankNumber}}</div>
+    </div>
+    <div *ngIf="page != 'confirm'" class="split inlineBlock infoHolder text-right">
+      <a (click)="onChangeBankInfo()">Change Bank Account Information</a>
+    </div>
+  </div>
+  <div *ngIf="fromPCI">
+    <div class="split inlineBlock infoHolder">
+      <div class="label">Routing/Transit Number:</div>
+      <div class="data">{{routingNumber}}</div>
+    </div>
+    <!--<div class="split inlineBlock infoHolder text-right">
+      <a>Change Bank Account Information</a>
+    </div>-->
+    <div class="infoHolder">
+      <div class="label">Bank Account Number:</div>
+      <div class="data">{{maskedBankNumber}}</div>
+    </div>
+    <div *ngIf="nickName" class="infoHolder">
+      <div class="label">Bank Account Nickname:</div>
+      <div class="data">{{nickName}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="subheader mT3P">Collective Invoices</div>
+<p>View your <a routerLink="/protected/customer/billing/paymenthistory.htm">Payment History</a>
+  to see pending payments.
+</p>
+<div id="tableHolder" class="mT3P">
+  <table class="lastColumnRight actionTable">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Due Date</th>
+        <th>Current Balance</th>
+        <th>Past Due</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="transTbody">
+        <tr *ngFor="let invoice of collectiveInvoices; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+          <td>
+            {{invoice.accountType}},<br/>
+            {{invoice.contractAccount | formatca}}
+          </td>
+          <td>{{invoice.dueDate}}</td>
+          <td class="b">${{invoice.currentBalance}}</td>
+          <td class="b" [appPastDue]="invoice.pastDue">${{invoice.pastDue}}</td>
+          <td>
+            <ng-container *ngIf="invoice.invoiceNumber">
+                <gme-invoice-link [invoiceNumber]="invoice.invoiceNumber" [caNumber]="invoice.contractAccount"></gme-invoice-link>
+            </ng-container>
+          </td>
+          <td>
+            <ng-container *ngIf="isCurrentBalGreaterThanZero(invoice.currentBalance)">
+                <a (click)="payBill(invoice)" class="button">Pay Bill</a>
+            </ng-container>
+            <ng-container *ngIf="!isCurrentBalGreaterThanZero(invoice.currentBalance)">
+                <a class="button btndisabled">Pay Bill</a>
+            </ng-container>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

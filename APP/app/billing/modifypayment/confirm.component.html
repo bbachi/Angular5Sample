@@ -1,0 +1,44 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Modify payment Confirm</h1>
+		<gme-property-name [propertyName]="propertyName$ | async"></gme-property-name>
+
+		<modify-request-details *ngIf="confirmData?.confirmationNumber; else showError"
+				[time]="confirmData?.submissionDate"
+				[confirmNumber]="confirmData?.confirmationNumber"
+				[email]="email$ | async">
+		</modify-request-details>
+
+		<ng-template #showError>
+				<gme-error errorMessage="We're unable to modify your payment."></gme-error>
+		</ng-template>
+
+    <div class="infoHolder">
+			<div class="subheader mT3P">Payment Information</div>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Payment Amount:</div>
+				<div class="data b">${{modifiedData?.newPaymentAmount}}</div>
+			</div>
+			<div>
+				<div class="label">Payment Date:</div>
+				<div class="data">{{modifiedData?.newPaymentDate}}</div>
+			</div>
+		</div>
+
+    <div class="infoHolder">
+			<div class="subheader mT3P">Bank Account Information</div>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Routing/Transit Number:</div>
+				<div class="data">{{modifiedData?.routingNum}}</div>
+			</div>
+			<div>
+				<div class="label">Bank Account Number:</div>
+				<div class="data">{{modifiedData?.maskedBankAccount}}</div>
+			</div>
+		</div>
+
+		<gme-print title="Modify payment Confirm"></gme-print>
+  </div>
+</section>

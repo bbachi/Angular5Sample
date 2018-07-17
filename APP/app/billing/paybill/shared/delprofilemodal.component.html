@@ -1,0 +1,17 @@
+<gme-modal id="delete-payment-profile">
+  <h1 class="b">Delete Payment Profile</h1>
+  <p>Are you sure you want to delete the payment profile below ?</p>
+  <div class="greyLineSeperator">&nbsp;</div>
+  <div>
+    <div class="label">Payment Profile Nickname:</div>
+    {{nickName}}
+  </div>
+  <div>
+      <div class="label">Account Ending in:</div>
+      {{bankAccountNum}}
+  </div>
+  <div id="buttonHolder" class="text-right">
+      <button class="black" (click)="onCancel('delete-payment-profile')" type="button">Cancel</button>
+      <button class="blue" (click)="onDelete('delete-payment-profile')">Delete</button>
+  </div>
+</gme-modal>

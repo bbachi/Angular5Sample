@@ -1,0 +1,37 @@
+<div *ngIf="!pastDueFlag" class="infoHolder">
+  <div class="subheader mT3P">Payment Information</div>
+  <gme-error *ngIf="paymentDateErr" [errorMessage]="errorMessage"></gme-error>
+  <div class="greyLineSeperator">&nbsp;</div>
+  <div>
+    <div class="label">Payment Amount:</div>
+    <input type="text" class="blockElement" (blur)="onPaymentAmount($event)" maxlength="50" value={{paymentAmount}} name="paymentAmount" id="paymentAmount"/>
+    <!--<div class="data b">${{paymentAmount}}</div>-->
+  </div>
+  <div>
+      <label for="paymentDate" >Payment Date</label>
+      <gme-datepicker
+          isBilling="true"
+          [dueDate]="dueDate"
+          [defaultDate]="paymentDate"
+          minDate="0"
+          [maxDate]="maxDate"
+          (dateChange)="onDateChange($event)">
+      </gme-datepicker>
+  </div>
+</div>
+<div *ngIf="pastDueFlag" class="infoHolder">
+  <div class="subheader mT3P">Payment Information</div>
+  <div class="greyLineSeperator">&nbsp;</div>
+  <div class="infoHolder mT3P">
+      <div>
+        <div class="label">Payment Amount:</div>
+        <div class="data">{{paymentAmount}}</div>
+      </div>
+  </div>
+  <div class="infoHolder mT3P">
+      <div>
+        <div class="label">Payment Date:</div>
+        <div class="data">{{paymentDate}}</div>
+      </div>
+  </div>
+</div>

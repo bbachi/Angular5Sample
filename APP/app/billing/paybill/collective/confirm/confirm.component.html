@@ -1,0 +1,53 @@
+<section id="contentWrapper">
+<div>
+  <gme-error
+     *ngIf="!(confirmation$ | async)?.paymentSuccess"
+     errorMessage="An error has occurred while processing your payment. Please check the payment history for the particular contract account before trying again.">
+  </gme-error>
+  <h1 *ngIf="(confirmation$ | async)?.paymentSuccess" class="pageHeader">Thank you for your payment</h1>
+
+  <div class="infoHolder mT3P">
+        <div>
+          <div class="label">Property:</div>
+          <div class="data">{{(confirmation$ | async)?.propertyName}}</div>
+        </div>
+        <div>
+          <div class="label">Account:</div>
+          <div class="data">CA #{{(confirmation$ | async)?.caNumber}}</div>
+        </div>
+        <div>
+          <div class="label">Date and Time:</div>
+          <div class="data">{{(confirmation$ | async)?.submissionDate}}</div>
+        </div>
+        <div *ngIf="(confirmation$ | async)?.paymentSuccess">
+          <div class="label">Confirmation Number:</div>
+          <div class="data">{{(confirmation$ | async)?.confirmationNumber}}</div>
+        </div>
+        <div *ngIf="(confirmation$ | async)?.paymentSuccess">
+          <div class="label">Confirmation Email Sent To:</div>
+          <div class="data">{{(confirmation$ | async)?.email}}</div>
+        </div>
+  </div>
+  <div class="infoHolder">
+    <div class="subheader mT3P">Payment Information</div>
+    <div class="greyLineSeperator">&nbsp;</div>
+    <div>
+      <div class="label">Payment Amount:</div>
+      <div class="data b">${{(confirmation$ | async)?.paymentAmount | twodecimal}}</div>
+    </div>
+    <div>
+      <div class="label">Payment Date:</div>
+      <div class="data">{{(confirmation$ | async)?.paymentDate}}</div>
+    </div>
+  </div>
+  <bank-info
+    page="confirm"
+    [routingNumber]="(confirmation$ | async)?.routingNumber"
+    [maskedBankNumber]="(confirmation$ | async)?.maskedBankNumber"
+    [nickName]="(confirmation$ | async)?.nickName"
+    [fromPCI]="(confirmation$ | async)?.fromPCI">
+  </bank-info>
+
+  <gme-print title="Payment Submission"></gme-print>
+</div>
+</section>

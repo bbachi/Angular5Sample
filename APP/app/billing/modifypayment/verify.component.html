@@ -1,0 +1,38 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Modify payment Verify</h1>
+		<gme-property-name [propertyName]="propertyName$ | async"></gme-property-name>
+
+    <div class="infoHolder">
+			<div class="subheader mT3P">Payment Information</div>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Payment Amount:</div>
+				<div class="data b">${{modifiedData?.paymentAmount}}</div>
+			</div>
+			<div>
+				<div class="label">Payment Date:</div>
+				<div class="data">{{modifiedData?.modifiedDate}}</div>
+			</div>
+		</div>
+
+    <div class="infoHolder">
+			<div class="subheader mT3P">Bank Account Information</div>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Routing/Transit Number:</div>
+				<div class="data">{{modifiedData?.routingNum}}</div>
+			</div>
+			<div>
+				<div class="label">Bank Account Number:</div>
+				<div class="data">{{modifiedData?.maskBankAccount}}</div>
+			</div>
+		</div>
+
+		<div *ngIf="!modifyPaymentClicked" id="buttonHolder" class="text-right">
+			<button (click)="onBack()" class="black">Back</button>
+			<button (click)="onModifyPayment()">Modify Payment</button>
+		</div>
+		<loading-indicator class="text-right" *ngIf="modifyPaymentClicked"></loading-indicator>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+<div class="infoHolder">
+  <div class="subheader mT3P">Bank Account Information</div>
+  <div class="greyLineSeperator">&nbsp;</div>
+  <div class="infoHolder mT3P">
+      <div>
+        <div class="label">Pay With:</div>
+        <div class="data">Bank Account</div>
+      </div>
+  </div>
+  <div class="storedBankAccountHolder">
+    <div class="mT1P" *ngFor="let bank of paymentMethods; let i = index;">
+      <input (click)="onStoredAccount(bank)" type="radio" id="bank{{i}}" name="selectbank" value="bank.nickname">
+      <label class="radio-inline" for="bank{{i}}">
+        <span class="gmeRadio"></span>
+        {{bank.nickname}}, {{bank.maskedBankAcc}}
+        <a (click)="onDelete(bank)" class="mL20">Delete</a>
+      </label>
+    </div>
+    <div class="mT1P">
+      <input (change)="onNewBankAccount($event)" type="radio" id="bank" name="selectbank" value="newbank">
+      <label class="radio-inline" for="bank">
+        <span class="gmeRadio"></span>
+        New Bank Account
+      </label>
+    </div>
+  </div>
+</div>
+<delete-paymentprofile-modal
+    [nickName]="nickNameForModal"
+    [bankAccountNum]="bankAccountNumForModal"
+    (deletePaymentEvent)="onDeleteConfirm($event)">
+</delete-paymentprofile-modal>

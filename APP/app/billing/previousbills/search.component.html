@@ -1,0 +1,26 @@
+<div class="mT3P">
+  <div id="searchAreaHolder">
+    <div>
+      <loading-indicator *ngIf="isLoading else showSearch"></loading-indicator>
+      <ng-template #showSearch>
+        <gme-error *ngIf="noCA else showApply" errorMessage="No CA found"></gme-error>
+        <ng-template #showApply>
+          <div class="inlineBlock mR3P">
+              <label for="searchBy" class="label">Service Address:</label>
+              <select id="accountnumber" (click)="onChangeContractAccount($event.target.value)" class="cardselectboxspace">
+                <optgroup label="Individual" *ngIf="contractAccountList?.indContractAccountList?.length > 0">
+                  <option *ngFor="let ca of contractAccountList?.indContractAccountList;" value="{{ca.contractAccountNumber}}:I">{{ca.address}}</option>
+                </optgroup>
+                <optgroup label="Collective">
+                  <option *ngFor="let ca of contractAccountList?.collContractAccountList;" value="{{ca.contractAccountNumber}}:C">{{ca.address}}</option>
+                </optgroup>
+              </select>
+          </div>
+          <div class="inlineBlock">
+            <a (click)="onApply()" class="button textBoxButton blue">Apply</a>
+          </div>
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+</div>

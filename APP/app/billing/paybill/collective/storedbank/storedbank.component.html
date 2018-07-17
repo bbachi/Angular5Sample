@@ -1,0 +1,33 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Payment Details</h1>
+
+		<div class="infoHolder mT3P">
+				<div>
+					<div class="label">Property:</div>
+					<div class="data">{{propertyName$ | async}}</div>
+				</div>
+		</div>
+
+		<collective-info [collectiveInfo]="collectiveInfo"></collective-info>
+		<pay-info-input
+				[paymentAmount]="collectiveInfo?.paymentAmount"
+				[paymentDate]="collectiveInfo?.paymentDate"
+				[dueDate]="collectiveInfo?.dueDate"
+				[pastDue]="collectiveInfo?.pastDue"
+				(paymentInfoEvent)="onPaymentInfoChange($event)">
+		</pay-info-input>
+		<payment-methods
+				(selectedBankEvent)="onSelectedBankAccount($event)"
+				(onNewBankEvent)="onNewBankAccount($event)"
+				[paymentMethods]="storedAccounts"
+				(deleteBankEvent)="onDeleteBankAccount($event)">
+		</payment-methods>
+		<gme-error *ngIf="showError" [errorMessage]="errorMessage"></gme-error>
+		<div id="buttonHolder" class="text-right">
+			<button (click)="onBack()" class="black">Back</button>
+			<button (click)="onContinue()">Continue</button>
+		</div>
+
+	</div>
+</section>

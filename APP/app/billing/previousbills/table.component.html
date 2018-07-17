@@ -1,0 +1,33 @@
+<gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+<div id="tableHolder">
+  <table id="paymentHistoryTbl" sortable-table (sorted)="onSorted($event)">
+    <thead>
+      <tr>
+        <th sortable-column="invoiceDate">Invoice Date</th>
+        <th sortable-column="startBillPeriod">Start Bill Period</th>
+        <th sortable-column="endBillPeriod">End Bill Period</th>
+        <th sortable-column="billType">Bill Type</th>
+        <th sortable-column="dueDate">Due Date</th>
+        <th sortable-column="invoiceAmount">Invoice Amount</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="transTbody">
+      <tr *ngFor="let previousBill of previousBills; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+        <td>{{previousBill.invoiceDate}}</td>
+        <td>{{previousBill.startBillPeriod}}</td>
+        <td>{{previousBill.endBillPeriod}}</td>
+        <td>{{previousBill.billType}}</td>
+        <td>{{previousBill.dueDate}}</td>
+        <td>${{previousBill.invoiceAmount}}</td>
+        <td>
+          <gme-invoice-link [invoiceNumber]="previousBill?.invoiceNumber" [caNumber]="caNumber"></gme-invoice-link>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+<div id="buttonHolder" class="text-right">
+  <gme-csv [csvList]="previousBills" [name]="csvName" [headers]="csvHeaders"></gme-csv>
+</div>

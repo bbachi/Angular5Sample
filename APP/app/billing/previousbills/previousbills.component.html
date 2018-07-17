@@ -1,0 +1,21 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Previous Bills</h1>
+		<gme-property-name [propertyName]="propertyName$ | async"></gme-property-name>
+		<sdl-message key="gme_ss_oam_multifamily_previousbills_top"></sdl-message>
+		<previous-bills-search (onApplyClick)="onApply($event)" [contractAccountList]="contractAccountList$ | async"></previous-bills-search>
+		<loading-indicator *ngIf="(previousbills$ | async)?.isLoading"></loading-indicator>
+		<ng-container *ngIf="(previousbills$ | async)?.isLoadingSuccess">
+				<div class="mT3P">
+						<previous-bills-table
+								*ngIf="(previousbills$ | async)?.previousBills?.length >0; else showErrResult"
+								[previousBills]="(previousbills$ | async)?.previousBills"
+								[caNumber]="selectedCANumber">
+						</previous-bills-table>
+						<ng-template #showErrResult>
+								<gme-error errorMessage="No Data available for the selected report type."></gme-error>
+						</ng-template>
+				</div>
+		</ng-container>
+	</div>
+</section>

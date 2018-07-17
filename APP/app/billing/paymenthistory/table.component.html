@@ -1,0 +1,39 @@
+<gme-error *ngIf="!(paymentHistoryList?.length >0); else showResult" errorMessage="No Payment History found for this account."></gme-error>
+<ng-template #showResult>
+  <gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+  <div id="tableHolder">
+    <table id="paymentHistoryTbl" sortable-table (sorted)="onSorted($event)">
+      <thead>
+        <tr>
+          <th sortable-column="receivedBy">Received By</th>
+          <th sortable-column="accountNumber">Account Number</th>
+          <th sortable-column="paymentDescription">Payment Description</th>
+          <th sortable-column="paymentAmount">Payment  Amount</th>
+          <th sortable-column="postingDate">Posting Date</th>
+          <th sortable-column="status">Status</th>
+        </tr>
+      </thead>
+      <tbody id="transTbody">
+          <tr *ngFor="let history of paymentHistoryList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+            <td>{{history.receivedBy}}</td>
+            <td>{{history.accountNumber}}</td>
+            <td>{{history.paymentDescription}}</td>
+            <td>${{history.paymentAmount}}</td>
+            <td>{{history.status != 'POSTED'?"NA":history.postingDate}}</td>
+            <td *ngIf="history.status == 'POSTED' || history.status == 'SENT'">POSTED</td>
+            <td *ngIf="history.status == 'SCHEDULED'">Scheduled {{history.scheduledCancelDate}}<br/>
+              <a (click)="cancelPayment(history.paymentID)">Cancel Payment</a>
+              <br/>
+              <a (click)="modifyPayment(history.paymentID)">Modify Payment</a>
+            </td>
+            <td *ngIf="history.status == 'CANCELLED'">Cancelled {{history.scheduledCancelDate}}</td>
+            <td *ngIf="history.status == 'RETURNED'" class="redText">{{history.status}}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+  <div id="buttonHolder" class="text-right">
+      <gme-csv [csvList]="this.billingService.getPaymentHistoryCSVData(paymentHistoryList)" [name]="csvName" [headers]="csvHeaders"></gme-csv>
+  </div>
+</ng-template>

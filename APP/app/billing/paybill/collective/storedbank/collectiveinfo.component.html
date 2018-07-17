@@ -1,0 +1,17 @@
+<div class="mT3P">
+  <div class="inlineBlock">
+    <div class="b">Account</div>
+    <div>{{collectiveInfo?.caNumber | formatca}}</div>
+  </div>
+  <div class="inlineBlock mL20">
+    <div class="b">Due Date</div>
+    <div>{{collectiveInfo?.dueDate}}</div>
+  </div>
+  <div class="inlineBlock mL20">
+    <div class="b">Current Balance</div>
+    <div>${{collectiveInfo?.currentBalance}}</div>
+  </div>
+  <div class="inlineBlock mL20">
+    <gme-invoice-link [invoiceNumber]="collectiveInfo?.invoiceNumber" [caNumber]="collectiveInfo?.caNumber"></gme-invoice-link>
+  </div>
+</div>

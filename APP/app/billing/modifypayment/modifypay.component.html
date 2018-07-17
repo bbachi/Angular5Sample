@@ -1,0 +1,50 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Modify Payment</h1>
+		<gme-property-name [propertyName]="propertyName$ | async"></gme-property-name>
+		<p>To use a different payment method, <a routerLink="/protected/customer/billing/paymenthistory.htm">cancel this payment</a>
+			and schedule a new payment.
+		</p>
+
+		<div class="infoHolder">
+			<div class="subheader mT3P">Payment Information</div>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Pay With:</div>
+				<div class="data b">Bank Account</div>
+			</div>
+			<div>
+				<div class="label">Bank Account Number:</div>
+				<div class="data b">{{maskedBankAccountNum}}</div>
+			</div>
+		</div>
+
+		<div class="infoHolder">
+			<div class="subheader mT3P">Modify Payment Information</div>
+			<gme-error *ngIf="paymentDateErr" [errorMessage]="errorMessage"></gme-error>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Payment Amount:</div>
+				<div class="data b">${{paymentAmount}}</div>
+			</div>
+			<div>
+				<div class="label">Payment Date:</div>
+				<ng-container *ngIf="dueDate">
+					<gme-datepicker
+		          isBilling="true"
+		          [dueDate]="dueDate"
+		          [defaultDate]="paymentDate"
+		          minDate="0"
+		          maxDate="29d"
+		          (dateChange)="onDateChange($event)">
+		      </gme-datepicker>
+				</ng-container>
+			</div>
+		</div>
+		<gme-error *ngIf="showError" [errorMessage]="errorMessage"></gme-error>
+		<div id="buttonHolder" class="text-right">
+			<button (click)="onBack()" class="black">Back</button>
+			<button (click)="onContinue()">Continue</button>
+		</div>
+  </div>
+</section>

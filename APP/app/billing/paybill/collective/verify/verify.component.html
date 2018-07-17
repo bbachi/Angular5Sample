@@ -1,0 +1,41 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Verify Payment</h1>
+		<!--<div id="dynamicContent">oam_selectAccount_top.xml</div> -->
+		<div class="infoHolder mT3P">
+					<div class="split inlineBlock infoHolder">
+						<div class="label labelmin">Property:</div>
+						<div class="data">{{propertyName$ | async}}</div>
+					</div>
+					<div class="split inlineBlock infoHolder">
+						<div class="label labelmin">Account:</div>
+						<div class="data">CA #{{caNumber}}</div>
+					</div>
+    </div>
+		<div class="infoHolder">
+			<div class="subheader mT3P">Payment Information</div>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Payment Amount:</div>
+				<div class="data b">${{paymentAmount}}</div>
+			</div>
+			<div>
+				<div class="label">Payment Date:</div>
+				<div class="data">{{paymentDate}}</div>
+			</div>
+		</div>
+		<bank-info
+			[routingNumber]="routingNumber"
+			[maskedBankNumber]="maskedBankNumber"
+			[nickName]="nickName"
+			[fromPCI]="fromPCI"
+			(changeBankInfo)="onChangeBankInfo()">
+		</bank-info>
+		<sdl-message key="gme_ss_oam_multifamily_pay_verification_bottom_tctxt"></sdl-message>
+		<div id="buttonHolder" class="text-right">
+			<button class="black" (click)="onBack()">Back</button>
+			<button *ngIf="!submitPaymentClicked" (click)="onContinue()">Submit Payment</button>
+			<button [disabled]="true" *ngIf="submitPaymentClicked"><loading-indicator></loading-indicator></button>
+		</div>
+	</div>
+</section>

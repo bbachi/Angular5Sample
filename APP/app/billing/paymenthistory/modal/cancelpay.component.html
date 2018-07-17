@@ -1,0 +1,26 @@
+<gme-modal id="cancel-payment">
+  <h1 class="b">Cancel Payment</h1>
+  <p>Are you sure you want to cancel this scheduled payment?</p>
+  <h3>Payment Information</h3>
+  <div class="greyLineSeperator">&nbsp;</div>
+  <div class="mrgntb">
+    <div class="label">Payment Amount:</div>
+    <div class="data">{{cancelPaymentInfo?.paymentAmount}}</div>
+  </div>
+  <div class="mrgntb">
+      <div class="label">Payment Date:</div>
+      <div class="data">{{cancelPaymentInfo?.scheduledCancelDate}}</div>
+  </div>
+  <div class="mrgntb">
+      <div class="label">Routing/Transit Number:</div>
+      <div class="data">{{cancelPaymentInfo?.routingNum}}</div>
+  </div>
+  <div class="mrgntb">
+      <div class="label">Bank Account Number:</div>
+      <div class="data">{{cancelPaymentInfo?.maskBankAccount | maskbank}}</div>
+  </div>
+  <div id="buttonHolder" class="text-right">
+      <button class="black" (click)="onCancel('cancel-payment')" type="button">No</button>
+      <button class="blue" (click)="onYes('cancel-payment')">Yes</button>
+  </div>
+</gme-modal>

@@ -1,0 +1,36 @@
+<div class="subheader mT3P">Individual Invoices</div>
+<div  class="mT3P">
+  <table class="lastColumnRight actionTable">
+    <thead>
+      <tr>
+        <th>Account</th>
+        <th>Current Balance</th>
+        <th>Past Due</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="transTbody">
+        <tr *ngFor="let invoice of individualInvoices; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+          <td>
+            {{invoice.accountType | premisetype:'PM'}},<br/>
+            {{invoice.contractAccount | formatca}}
+          </td>
+          <td class="b">${{invoice.currentBalance}}</td>
+          <td class="b" [appPastDue]="invoice.pastDue">${{invoice.pastDue}}</td>
+          <td><a (click)="payBill(invoice)" class="button">Pay Bill</a></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--
+<tr>
+  <td>
+    Common Areas,<br/>
+    #XXXX-X
+  </td>
+  <td class="b">$50.00</td>
+  <td class="warnText b">$325.00</td>
+  <td><a href="#" class="button">Pay Bill</a></td>
+</tr>
+-->

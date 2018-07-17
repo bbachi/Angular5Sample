@@ -1,0 +1,22 @@
+<section id="contentWrapper">
+  <div>
+    <h1 class="pageHeader">Payment History</h1>
+    <gme-property-name [propertyName]="propertyName$ | async"></gme-property-name>
+    <!--<sdl-message message="gme_ss_oam_multifamily_paymenthistory_top_tctxt"></sdl-message> -->
+    <payment-history-search (onApplyClick)="onApply($event)" [contractAccountList]="contractAccountList$ | async"></payment-history-search>
+    <loading-indicator *ngIf="(paymentHistory$ | async)?.isLoading"></loading-indicator>
+    <ng-container *ngIf="(paymentHistory$ | async)?.isLoadingSuccess">
+        <div class="">
+            <payment-history-table
+                (onCancelPaymentClick)="onCancelPayment($event)"
+                (onModifyPaymentClick)="onModifyPayment($event)"
+                [paymentHistoryList]="(paymentHistory$ | async)?.data">
+            </payment-history-table>
+        </div>
+    </ng-container>
+  </div>
+</section>
+<cancel-payment-modal
+    [cancelPaymentInfo]="cancelPaymentInfo"
+    (cancelPaymentEvent)="onCancelPaymentEvent($event)">
+</cancel-payment-modal>
