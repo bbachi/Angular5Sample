@@ -1,0 +1,9 @@
+<gme-modal id="session-timeout">
+  <h1>Session Timeout Warning</h1>
+  <p>Your session is about to timeout due to inactivity.</p>
+  <div id="buttonHolder" class="text-right">
+      <button class="black" (click)="stayLoggedOn('session-timeout')" type="button">Stay Logged On</button>
+      <button class="blue" (click)="logOut('session-timeout')">Log Out</button>
+  </div>
+</gme-modal>
+<router-outlet></router-outlet>
