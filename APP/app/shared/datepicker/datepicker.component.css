@@ -1,0 +1,25 @@
+.ui-datepicker-trigger {
+    margin-left: 5px;
+}
+
+.marginrgt{
+    margin-right: 5px;
+}
+
+img{
+  cursor: pointer;
+}
+
+td.current a.ui-state-default, td.standard a.ui-state-active{
+	background:none repeat scroll 0 0 #2BB673 !important;
+	color:#FFFFFF;
+	border:1px solid #D3D3D3;
+	text-align: center;
+}
+
+td.duedate a.ui-state-default {
+	background:none repeat scroll 0 0 #CA5927 !important;
+	color: #fff;
+	border:1px solid #D3D3D3;
+	text-align: center;
+}

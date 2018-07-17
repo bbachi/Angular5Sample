@@ -1,0 +1,16 @@
+<header>
+		<nav>
+	<div class="desktopMenu">
+			<gme-main-nav></gme-main-nav>
+
+			<gme-subnav-half
+				[webSecurityRole]="(webSecurityRole$ | async)">
+			</gme-subnav-half>
+		</div>
+		<!-- Start Mobile Menu-->
+			<div class="mobileMenu">
+
+			</div>
+		<!-- End Mobile Menu-->
+		</nav>
+	</header>

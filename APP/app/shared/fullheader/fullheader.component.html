@@ -1,0 +1,28 @@
+<header>
+		<nav>
+	<div class="desktopMenu">
+			<gme-main-nav></gme-main-nav>
+			<gme-subnav-full *ngIf="isSelectedpropertyExist; else showHalfHeader"
+					[webSecurityRole]="(webSecurityRole$ | async)"
+					[startEnabled]="startEnabled"
+					[stopEnabled]="stopEnabled"
+					[billingEnabled]="billingEnabled"
+					[billingRestrictionReason]="billingRestrictionReason"
+					[startRestrictionReason]="startRestrictionReason"
+					[stopRestrictionReason]="stopRestrictionReason">
+			</gme-subnav-full>
+			<ng-template #showHalfHeader>
+				<gme-subnav-half *ngIf="!isSelectedpropertyExist"
+					[webSecurityRole]="(webSecurityRole$ | async)">
+				</gme-subnav-half>
+			</ng-template>
+
+
+		</div>
+		<!-- Start Mobile Menu-->
+			<div class="mobileMenu">
+
+			</div>
+		<!-- End Mobile Menu-->
+		</nav>
+	</header>

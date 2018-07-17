@@ -1,0 +1,23 @@
+a{
+  cursor: pointer
+}
+
+a.disabled {
+    color: lightgrey !important;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+.disable-span{
+    color: lightgrey !important;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+.show{
+   display: block !important;
+}
+
+.helpIcon{
+    cursor: pointer;
+}

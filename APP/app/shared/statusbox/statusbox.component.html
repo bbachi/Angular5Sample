@@ -1,0 +1,9 @@
+
+<div *ngIf="isSuccess == false" id="errorMessage" >
+  <span class="errorInfo">{{message}}</span>
+  <span class="errorIcon"></span>
+</div>
+
+<div *ngIf="isSuccess == true" id="successMessage" >
+  <span class="successInfo">{{message}}</span>
+</div>

@@ -1,0 +1,15 @@
+<li *ngIf="!restrictionEnabled; else showUrl">
+   <span class="disable-span">{{title}}</span>
+   <span (mouseenter)="mouseEnter($event)" (mouseleave)="mouseLeave($event)" class="helpIcon"></span>
+   <gme-tool-tip
+      title="Access Restricted"
+      [message]="restrictionReason"
+      *ngIf="showToolTip"
+      [style.left.px]="getPos('left')"
+      [style.top.px]="getPos('top')"
+      style="position: absolute;z-index:10;">
+   </gme-tool-tip>
+</li>
+<ng-template #showUrl>
+  <li><a routerLink="{{url}}" class="moreLinkNav">{{title}}</a></li>
+</ng-template>

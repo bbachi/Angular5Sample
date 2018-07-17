@@ -1,0 +1,45 @@
+.tooltip-content{
+		width:300px;
+}
+.tooltip-content h1
+	{
+		color: #016297;
+		font-size: 1.5em;
+		margin:0;
+	}
+	.tooltip {
+		padding: 0px 10px;
+		color: Black;
+		font: 9pt "Arial", Arial;
+		max-width: 400px;
+		border: 1px solid #999;
+		position: absolute;
+		white-space: pre-line;
+		border-radius: 5px;
+		z-index:100001;
+	}
+	.tooltip, .arrow:after {
+		background: #fff;
+		border: 1px solid #999;
+	}
+	.arrow {
+		height: 70px;
+		width: 14px;
+		overflow: hidden;
+		position: absolute;
+		top: 1px;
+		margin-top: -5px;
+		left: -14px;
+	}
+	.arrow:after {
+		content: "";
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		-webkit-transform-origin: 5px 25px;
+		-webkit-transform: rotate(45deg);
+		-moz-transform-origin: 5px 25px;
+		-moz-transform: rotate(45deg);
+		-ms-transform-origin: 5px 25px;
+		-ms-transform: rotate(45deg);
+	}

@@ -1,0 +1,25 @@
+<div class="subMenu halfMenu">
+  <ul class="sublinks">
+    <li>
+      <a (click)="onDashboardLink()">Dashboard</a>
+    </li>
+    <li class="moreMenus">
+      <a>Profile Management<span class="subMenuArrow"></span></a>
+      <ul class="moreLinks">
+        <li *ngIf="webSecurityRole | overviewlink"><a routerLink="/protected/customer/profile/overview.htm" class="moreLinkNav">Overview</a></li>
+        <li *ngIf="webSecurityRole | adduserlink"><a routerLink="/protected/customer/profile/adduser/info.htm" class="moreLinkNav">Add User</a></li>
+        <li *ngIf="webSecurityRole | updateuserlink"><a routerLink="/protected/customer/profile/update/user.htm" class="moreLinkNav">Update User</a></li>
+        <li><a routerLink="/protected/customer/profile/ownprofile/update.htm" class="moreLinkNav">Update My Profile</a></li>
+        <li *ngIf="webSecurityRole | removeuserlink"><a routerLink="/protected/customer/profile/remove/search.htm" class="moreLinkNav">Remove User</a></li>
+      </ul>
+    </li>
+    <li class="moreMenus">
+      <a>Customer Care<span class="subMenuArrow"></span></a>
+      <ul class="moreLinks">
+        <li><a routerLink="/protected/customer/cc/overview.htm" class="moreLinkNav">Overview</a></li>
+        <li><a routerLink="/protected/customer/cc/emailus.htm" class="moreLinkNav">Email Us</a></li>
+        <li><a routerLink="/protected/customer/cc/faqs.htm" class="moreLinkNav">FAQs</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

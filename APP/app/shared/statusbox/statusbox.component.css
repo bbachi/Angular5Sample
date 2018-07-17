@@ -1,0 +1,13 @@
+#successMessage
+{
+	background-color:#90EE90;
+	border:2px solid #008000;
+	padding:1%;
+	margin:2% 0px;
+}
+
+.successInfo
+{
+	display:inline-block;
+	width:95%;
+}

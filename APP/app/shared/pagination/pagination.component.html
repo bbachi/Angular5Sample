@@ -1,0 +1,23 @@
+<div *ngIf="showPagination" class="paginationHolder">
+	<div class="inlineBlock halfwidth">
+		<label *ngIf="placement == 'top'" for="displayRange">Display</label>
+		<select *ngIf="placement == 'top'" id="displayRange" [(ngModel)]="pageSize" (change)="onPageSizeDisplay()" name="displayRange">
+			<option value="0">ALL</option>
+			<option selected value="25">25</option>
+			<option *ngIf="totalSize > 25" value="50">50</option>
+			<option *ngIf="totalSize > 50" value="75">75</option>
+			<option *ngIf="totalSize > 75" value="100">100</option>
+		</select>
+		<span *ngIf="placement == 'top'" class="">rows at a time</span>
+	</div>
+
+	<div class="paginationRange">
+		<span>Showing {{rangeStart}} to {{rangeEnd}} of {{totalSize}} entries</span>
+		<ng-container *ngIf="showButtons">
+			<a (click)="onFirst()">First</a>
+			<a (click)="onPrevious()">Previous</a>
+			<a (click)="onNext()">Next</a>
+			<a (click)="onLast()">Last</a>
+		</ng-container>
+	</div>
+</div>

@@ -1,0 +1,91 @@
+<div class="subMenu">
+  <ul class="sublinks">
+      <li>
+        <a routerLink="/protected/customer/dashboard.htm">Dashboard</a>
+      </li>
+      <li class="moreMenus">
+        <a>Service<span class="subMenuArrow"></span></a>
+        <ul class="moreLinks">
+          <gme-link
+              title="Start Service"
+              [restrictionEnabled]="startEnabled"
+              [restrictionReason]="startRestrictionReason"
+              url="/protected/customer/service/start/selectproperty.htm">
+          </gme-link>
+          <gme-link
+              title="Stop Service"
+              [restrictionEnabled]="stopEnabled"
+              [restrictionReason]="stopRestrictionReason"
+              url="/protected/customer/service/stop/businessinfo.htm">
+          </gme-link>
+        </ul>
+      </li>
+      <li class="moreMenus">
+        <a>Billing<span class="subMenuArrow"></span></a>
+        <ul class="moreLinks">
+          <gme-link
+              title="View Current Bill"
+              [restrictionEnabled]="billingEnabled"
+              [restrictionReason]="billingRestrictionReason"
+              url="/protected/customer/billing/paybill/viewbill.htm">
+          </gme-link>
+          <gme-link
+              title="Payment History"
+              [restrictionEnabled]="billingEnabled"
+              [restrictionReason]="billingRestrictionReason"
+              url="/protected/customer/billing/paymenthistory.htm">
+          </gme-link>
+          <gme-link
+              *ngIf="!(webSecurityRole == 'I_Agent_OPS_REP' || webSecurityRole == 'I_Read-Only_IT')"
+              title="Previous Bills"
+              [restrictionEnabled]="defaultRestriction"
+              url="/protected/customer/billing/previousbills.htm">
+          </gme-link>
+        </ul>
+      </li>
+      <li *ngIf="webSecurityRole | vumlink" class="moreMenus">
+        <a>Monitoring<span class="subMenuArrow"></span></a>
+        <ul class="moreLinks">
+          <li><a routerLink="/protected/customer/vacancy/alertsetup.htm" class="moreLinkNav">Vacant Unit Alert Setup</a></li>
+          <li><a routerLink="/protected/customer/vacancy/dailyreport.htm" class="moreLinkNav">Daily Report</a></li>
+        </ul>
+      </li>
+      <li>
+        <a routerLink="/protected/customer/forms/list.htm">Forms</a>
+      </li>
+      <li>
+        <a routerLink="/protected/customer/transactions/list.htm">Transactions</a>
+      </li>
+      <li class="moreMenus">
+        <a>Reports<span class="subMenuArrow"></span></a>
+        <ul class="moreLinks">
+          <li><a routerLink="/protected/customer/reports/vacancy.htm" class="moreLinkNav">Vacancy</a></li>
+          <li><a routerLink="/protected/customer/reports/roll.htm" class="moreLinkNav">Roll</a></li>
+        </ul>
+      </li>
+      <li class="moreMenus">
+          <a>Profile<span class="subMenuArrow"></span></a>
+          <ul class="moreLinks">
+            <li>
+              <a class="moreLinkNav">Profile Management<span class="blackRightArrow"></span></a>
+              <ul class="moreSubLinkHolder show">
+                <li *ngIf="webSecurityRole | overviewlink"><a routerLink="/protected/customer/profile/overview.htm" class="moreSubLinkNav">Overview</a></li>
+                <li *ngIf="webSecurityRole | adduserlink"><a routerLink="/protected/customer/profile/adduser/info.htm" class="moreSubLinkNav">Add User</a></li>
+                <li *ngIf="webSecurityRole | updateuserlink"><a routerLink="/protected/customer/profile/update/user.htm" class="moreSubLinkNav">Update User</a></li>
+                <li><a routerLink="/protected/customer/profile/ownprofile/update.htm" class="moreSubLinkNav">Update My Profile</a></li>
+                <li *ngIf="webSecurityRole| removeuserlink"><a routerLink="/protected/customer/profile/remove/search.htm" class="moreSubLinkNav">Remove User</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="moreLinkNav">Customer Care<span class="blackRightArrow"></span></a>
+              <ul class="moreSubLinkHolder show">
+                <li><a routerLink="/protected/customer/cc/overview.htm" class="moreSubLinkNav">Overview</a></li>
+                <li><a routerLink="/protected/customer/cc/emailus.htm" class="moreSubLinkNav">Email Us</a></li>
+                <li><a routerLink="/protected/customer/cc/faqs.htm" class="moreSubLinkNav">FAQs</a></li>
+              </ul>
+            </li>
+          </ul>
+      </li>
+  </ul>
+
+</div>

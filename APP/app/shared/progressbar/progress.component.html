@@ -1,0 +1,9 @@
+ <section id="progressBarSec">
+	<div id="progress">
+		<div class="progressSteps">
+		 		<ng-container *ngFor="let brdCrumb of nameList; let i = index">
+					<div class="progressStep" gme-progress-step  [brdCrumb]="brdCrumb"></div>
+				</ng-container>
+		</div>
+	</div>
+</section> 
