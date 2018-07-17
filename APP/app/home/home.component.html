@@ -1,0 +1,41 @@
+<login-header></login-header>
+<div id="pageBody">
+	<section id="customerInfoSec">
+		<div class="selectedInfosec loginInfosec">
+
+			<div id="loginBox">
+				<h1>Log In</h1>
+				<p>To proceed, please log in to your account or register for Online Account Management below.</p>
+				<div>First time user? <a href="#">Register now</a></div>
+				<div *ngIf="!isUserValidated">
+            <span class="errorMsg">{{errorMessage}}</span>
+        </div>
+				<form [formGroup]="loginForm" id="loginform" autocomplete="off" (ngSubmit)="login(loginForm.value)" method="post" novalidate>
+					<div class="mT3P">
+						<input type="text" name="usename" formControlName="userName" id="username" placeholder="Username"/>
+					</div>
+					<div class="mT3P">
+						<input type="password" name="password" id="password" placeholder="Password"/>
+					</div>
+					<div class="mT3P">
+						<button type="submit">Log In</button>
+					</div>
+					<div class="mT3P">
+						<div class="inlineBlock">
+							<input type="checkbox" id="rememberme" name="rememberme" value="rememberme">
+							<label class="checkbox-inline" for="rememberme">
+							  <span class="gmeCheckbox"></span>
+							  Remember me
+							</label>
+						</div>
+						<div class="inlineBlock">
+							<span class="helpIcon"></span>
+						</div>
+					</div>
+				</form>
+				<div class="mT3P">Forgot your <a href="">username</a> or <a href="#">password</a>?</div>
+			</div>
+	    </div>
+	</section>
+</div>
+<login-footer></login-footer>

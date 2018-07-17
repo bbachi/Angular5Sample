@@ -1,0 +1,14 @@
+<section id="contentWrapper">
+  <div>
+  	<h1 class="pageHeader">Forms</h1>
+
+  	<div style="min-height:400px">
+    	<ul *ngIf="(forms$ | async)?.isLoadingSuccess">
+
+    		<li *ngFor="let fm of (forms$ | async)?.formsList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+            <a (click)="getPDF(fm.pid)">{{fm.displayName}}</a></li>
+      </ul>
+      <loading-indicator *ngIf="(forms$ | async)?.isLoading"></loading-indicator>
+    </div>
+  </div>
+</section>

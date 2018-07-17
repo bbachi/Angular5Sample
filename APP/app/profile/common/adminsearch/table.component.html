@@ -1,0 +1,35 @@
+<gme-error *ngIf="userList?.length == 0; else showTable;" errorMessage="No users found for the search criteria."></gme-error>
+<ng-template #showTable>
+	<div id="managementsection" class="mT3P">
+		<div class="greyLineSeperator">&nbsp;</div>
+			<gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+			<div id="tableHolder">
+				<table id="propertyTbl" sortable-table (sorted)="onSorted($event)">
+					<thead>
+						<tr>
+							<th></th>
+	            <th sortable-column="firstName">First Name</th>
+	            <th sortable-column="lastName">Last Name</th>
+	            <th sortable-column="userName">User Name</th>
+	            <th sortable-column="securityRole">Security Role</th>
+	            <th sortable-column="securityRoleDisplayName">User Type</th>
+						</tr>
+					</thead>
+					<tbody id="transTbody">
+							<tr *ngFor="let user of userList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+								<td>
+									<input (click)="onUserSelect(user)" id={{i}} name="user" type="radio" value={{i}}>
+									<label class="radio-inline" for={{i}}><span class="gmeRadio"></span></label>
+								</td>
+								<td>{{user.firstName}}</td>
+								<td>{{user.lastName}}</td>
+								<td>{{user.userName}}</td>
+								<td>{{user.securityRole}}</td>
+								<td>{{user.securityRoleDisplayName}}</td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
+			<gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+	</div>
+</ng-template>

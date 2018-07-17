@@ -1,0 +1,17 @@
+<div id="divid">
+  <div *ngIf="editingDone">
+    <div class="label">Fax number:</div>
+    <div class="data">{{displayFaxNum}}</div>
+    <div class="inlineBlock width40Per text-right"><a (click)="onEdit()" class="edit">Edit</a></div>
+  </div>
+  <div class="inlineBlock" *ngIf="editing">
+      <div class="inlineBlock">
+        <label for="faxNumber">Fax number</label>
+        <input type="text" maxlength="10" name="newFaxNumber" [(ngModel)]="newFaxNumber" value={{newFaxNumber}}/>
+      </div>
+      <div class="inlineBlock">
+        <a (click)="onSave()">Save</a>
+        <a (click)="onCancel()" class="mL20">Cancel</a>
+      </div>
+  </div>
+</div>

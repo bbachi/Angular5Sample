@@ -1,0 +1,133 @@
+<section id="contentWrapper">
+<div>
+	<h1 class="pageHeader">Add User</h1>
+	<p>Enter contact and security information for the user. Note: The email address you enter is the address that Green Mountain Energy will use to email the user their username and a link to access the system.</p>
+
+	<form name="addUserFrm" id="addUserFrm" [formGroup]="addUserForm" autocomplete="off" novalidate (ngSubmit)="addUser(addUserForm.value)">
+		<div class="infoHolder mT3P">
+					<div class="subheader">Contact Information</div>
+					<div class="greyLineSeperator">&nbsp;</div>
+					<div class="width70Per">
+						<div>
+							<div class="split inlineBlock">
+								<label for="firstName">First Name</label>
+								<input type="text" formControlName="firstName" noWhiteSpaces maxlength="50" name="firstName" id="firstName"/>
+								<p *ngIf="addUserForm.get('firstName').touched &&
+								addUserForm.get('firstName')?.errors &&
+								addUserForm.get('firstName').errors.pattern"><span class="errorMsg">only characters are allowed.</span></p>
+							</div>
+							<div class="split inlineBlock">
+								<label for="lastName">Last Name</label>
+								<input type="text" formControlName="lastName" noWhiteSpaces maxlength="50" name="lastName" id="lastName"/>
+								<p *ngIf="addUserForm.get('lastName').touched &&
+								addUserForm.get('lastName')?.errors &&
+								addUserForm.get('lastName').errors.pattern"><span class="errorMsg">only characters are allowed.</span></p>
+							</div>
+						</div>
+						<div class="mT3P">
+							<div class="split inlineBlock">
+								<label for="phoneNumber">Phone Number</label>
+								<input type="text" name="phoneNumber" formControlName="phoneNumber" maxlength="10" placeholder="(___) xxx-xxxx" class="phonefax"/>
+								<label for="phoneExtNumber" class="hide">Alternate Phone Number</label>
+								<input type="text" name="phoneExtNumber" formControlName="phoneExtNumber" maxlength="4" class="ext"/>
+								<p *ngIf="addUserForm.get('phoneNumber').touched &&
+								addUserForm.get('phoneNumber')?.errors &&
+								addUserForm.get('phoneNumber').errors.pattern"><span class="errorMsg">only numbers are allowed.</span></p>
+								<p *ngIf="addUserForm.get('phoneNumber').touched &&
+								addUserForm.get('phoneNumber')?.errors &&
+								addUserForm.get('phoneNumber').errors.minlength"><span class="errorMsg">Phone Number should be minimum 10 characters.</span></p>
+								<p *ngIf="addUserForm.get('phoneExtNumber').touched &&
+								addUserForm.get('phoneExtNumber')?.errors &&
+								addUserForm.get('phoneExtNumber').errors.pattern"><span class="errorMsg">only numbers are allowed.</span></p>
+							</div>
+							<div class="split inlineBlock">
+								<label for="altPhoneNumber">Alternate Phone Number</label>
+								<input type="text" name="altPhoneNumber" formControlName="altPhoneNumber" maxlength="10" placeholder="(___) xxx-xxxx"  class="phonefax"/>
+								<label for="altPhoneExtNumber" class="hide">Alternate Phone Number</label>
+								<input type="text" name="altPhoneExtNumber" formControlName="altPhoneExtNumber" maxlength="4" class="ext"/>
+								<p *ngIf="addUserForm.get('altPhoneNumber').touched &&
+								addUserForm.get('altPhoneNumber')?.errors &&
+								addUserForm.get('altPhoneNumber').errors.pattern"><span class="errorMsg">only numbers are allowed.</span></p>
+								<p *ngIf="addUserForm.get('altPhoneNumber').touched &&
+								addUserForm.get('altPhoneNumber')?.errors &&
+								addUserForm.get('altPhoneNumber').errors.minlength"><span class="errorMsg">Alt Phone Number should be minimum 10 characters.</span></p>
+								<p *ngIf="addUserForm.get('altPhoneExtNumber').touched &&
+								addUserForm.get('altPhoneExtNumber')?.errors &&
+								addUserForm.get('altPhoneExtNumber').errors.pattern"><span class="errorMsg">only numbers are allowed.</span></p>
+							</div>
+						</div>
+						<!-- [ngModel]="altphone | phformatplaceholder" (ngModelChange)="altphone=$event" -->
+						<div class="mT3P">
+								<label for="faxNumber">Fax Number</label>
+								<input type="text" name="faxNumber" formControlName="faxNumber" maxlength="10" placeholder="(___) xxx-xxxx" class="phonefax"/>
+								<p *ngIf="addUserForm.get('faxNumber').touched &&
+								addUserForm.get('faxNumber')?.errors &&
+								addUserForm.get('faxNumber').errors.pattern"><span class="errorMsg">only numbers are allowed.</span></p>
+								<p *ngIf="addUserForm.get('faxNumber').touched &&
+								addUserForm.get('faxNumber')?.errors &&
+								addUserForm.get('faxNumber').errors.minlength"><span class="errorMsg">Fax Number should be minimum 10 characters.</span></p>
+						</div>
+						<div class="mT3P">
+								<label for="emailAddress">Email Address</label>
+								<input type="text" name="emailAddress" maxlength="50" [ngClass]="{'bordererrcls':emailsMismatch}" formControlName="emailAddress" placeholder="smith@email.com"/>
+								<p *ngIf="addUserForm.get('emailAddress').touched &&
+								addUserForm.get('emailAddress')?.errors &&
+								addUserForm.get('emailAddress').errors.pattern"><span class="errorMsg">email is not valid.</span></p>
+								<p *ngIf="addUserForm.get('emailAddress').touched && emailsMismatch"><span class="errorMsg">Email address must match in both fields.</span></p>
+						</div>
+						<div class="mT3P">
+								<label for="reEmailAddress">Re-Type Email Address</label>
+								<input type="text" name="reEmailAddress" maxlength="50" [ngClass]="{'bordererrcls':emailsMismatch}" formControlName="reEmailAddress"  placeholder="smith@email.com"/>
+								<p *ngIf="addUserForm.get('reEmailAddress').touched &&
+								addUserForm.get('reEmailAddress')?.errors &&
+								addUserForm.get('reEmailAddress').errors.pattern"><span class="errorMsg">email is not valid.</span></p>
+								<p *ngIf="addUserForm.get('reEmailAddress').touched && emailsMismatch"><span class="errorMsg">Email address must match in both fields.</span></p>
+						</div>
+					</div>
+					<div class="subheader">Security Information</div>
+					<div class="greyLineSeperator">&nbsp;</div>
+					<div class="width70Per">
+						<div class="mT3P">
+								<label for="userName">Username</label>
+								<input type="text" name="userName" maxlength="20" formControlName="userName"/> <span class="">(minimum 6 characters)</span>
+								<p *ngIf="addUserForm.get('userName').touched &&
+								addUserForm.get('userName')?.errors &&
+								addUserForm.get('userName').errors.minlength"><span class="errorMsg">UserName should be minimum 6 characters.</span></p>
+								<p *ngIf="addUserForm.get('userName').touched &&
+								addUserForm.get('userName')?.errors &&
+								addUserForm.get('userName').errors.pattern"><span class="errorMsg">UserName should contain only alphabets and numbers.</span></p>
+						</div>
+						<div *ngIf="showAccessPrivileges" class="mT3P">
+								<div class="label">Access Privileges</div>
+								<div class="mT1P">
+									<input type="radio" id="transactionReport" (click)="onAccessprivRadioClick($event.target)" name="transactionReport" value="true">
+									<label class="radio-inline" for="transactionReport">
+									  <span class="gmeRadio"></span>
+									  Transactional and report access
+									</label>
+								</div>
+								<div class="mL20">
+									<input type="checkbox" id="startStopService" name="startStopService" (click)="onStartStopAccess($event.target)" value="startStopService" [disabled]="isAccessprivNotSelected">
+									<label class="checkbox-inline disabled" for="startStopService">
+									  <span class="gmeCheckbox"></span>
+									  Able to request start/stop service
+									</label>
+								</div>
+								<div class="mL20">
+									<input type="checkbox" id="payBill" name="payBill" (click)="onBillingAccess($event.target)" value="payBill" [disabled]="isAccessprivNotSelected">
+									<label class="checkbox-inline disabled" for="payBill">
+									  <span class="gmeCheckbox"></span>
+									  Able to pay bills
+									</label>
+								</div>
+						</div>
+					</div>
+			</div>
+			<gme-error *ngIf="isUserFormNotValid" errorMessage="To continue, please complete the form."></gme-error>
+			<div id="buttonHolder" class="text-right">
+				<button class="black" type="button" (click)="onBack()">Back</button>
+				<button class="blue" type="submit">Continue</button>
+			</div>
+		</form>
+  </div>
+</section>

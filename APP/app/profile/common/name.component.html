@@ -1,0 +1,21 @@
+<div id="divid">
+  <div *ngIf="editingDone">
+    <div class="label">Name:</div>
+    <div class="data">{{firstName}} {{lastName}}</div>
+    <div class="inlineBlock width40Per text-right"><a (click)="onEdit()" class="edit">Edit</a></div>
+  </div>
+  <div class="inlineBlock" *ngIf="editing">
+      <div class="inlineBlock">
+        <label for="firstName">First Name</label>
+        <input type="text" name="newFirstName" [(ngModel)]="newFirstName" value={{newFirstName}}/>
+      </div>
+      <div class="inlineBlock mL20">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="newLastName" [(ngModel)]="newLastName" value={{newLastName}}/>
+      </div>
+      <div class="inlineBlock">
+        <a (click)="onSave()">Save</a>
+        <a (click)="onCancel()" class="mL20">Cancel</a>
+      </div>
+  </div>
+</div>

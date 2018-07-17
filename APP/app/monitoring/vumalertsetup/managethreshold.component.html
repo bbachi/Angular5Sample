@@ -1,0 +1,55 @@
+<gme-status-box *ngIf="updateStatus && message" [message]="message" [isSuccess]="updateStatus"></gme-status-box>
+<gme-error *ngIf="isError" [errorMessage]="validateMessage"></gme-error>
+<div class="subheader mT3P">Manage Unit Types and Thresholds</div>
+<p>If you need to track a specific unit more closely, you can do so by setting up threshold amounts for each unit number. Please note, if you make a change to the threshold amounts above, it will override any changes below.</p>
+<gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+<div>
+  <table class="actionTable" sortable-table (sorted)="onSorted($event)">
+    <thead>
+      <tr>
+        <th sortable-column="unitNumber">Unit #</th>
+        <th sortable-column="streetNum">Street Address</th>
+        <th sortable-column="city">City</th>
+        <th sortable-column="state">State</th>
+        <th sortable-column="zipcode">Zip Code</th>
+        <th sortable-column="unitType">Unit Type</th>
+        <th sortable-column="unitThreshold">Unit Alert Thresholds</th>
+        <th *ngIf="!editAllClicked"><span (click)="onEditAll()" class="editIcon"></span></th>
+        <th *ngIf="editAllClicked">
+          <span (click)="onCancelAll()" class="cancelAllIcon"></span>
+          <span (click)="onSaveAll()" class="saveAllIcon"></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="transTbody">
+        <tr *ngFor="let unit of unitList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+          <td>{{unit.unitNumber}}</td>
+          <td>{{unit.streetNum}} {{unit.streetName}}</td>
+          <td>{{unit.city}}</td>
+          <td>{{unit.state}}</td>
+          <td>{{unit.zipcode}}</td>
+          <td *ngIf="!editAllClicked">
+              <ng-container *ngIf="unit.unitType == '0'">Other</ng-container>
+              <ng-container *ngIf="unit.unitType != '0'">{{unit.unitType}} Bedroom</ng-container>
+          </td>
+          <td *ngIf="!editAllClicked">{{unit.unitThreshold | stripleadingzero}} kWh</td>
+          <td>
+          	<span *ngIf="!editAllClicked" (click)="onEdit(unit)" class="editIcon"></span>
+          </td>
+          <td *ngIf="editAllClicked">
+            <select id="searchBy" (change)="unitTypeChange(unit,$event.target.value)" name="searchBy">
+              <option [selected]="unit.unitType == '1'" value="1">1 Bedroom</option>
+              <option [selected]="unit.unitType == '2'" value="2">2 Bedroom</option>
+              <option [selected]="unit.unitType == '3'" value="3">3 Bedroom</option>
+              <option [selected]="unit.unitType == '0'" value="0">Other</option>
+            </select>
+          </td>
+          <td *ngIf="editAllClicked">
+            <input type="textbox" onlynumbers (change)="unitThresholdChange(unit,$event.target.value)" value="{{unit.unitThreshold}}" maxlength="4" class="unitBox"/>kWh
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+<vum-edit-modal [unit]="selectedUnitForEdit" (esiidAttrUpdate)="updateESIIDAttribute($event)"></vum-edit-modal>

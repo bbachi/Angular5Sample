@@ -1,0 +1,29 @@
+<h1 class="pageHeader">Set Vacant Unit Thresholds</h1>
+<p>You can set a threshold per unit type below. If a unit type exceeds the threshold you specified, it will appear in the daily Vacant Unit Alert report.</p>
+<gme-error *ngIf="isThresholdValEmpty" errorMessage="Please enter Threshold for update."></gme-error>
+<div class="mrgtop10">
+  <table class="actionTable ">
+    <thead>
+      <tr>
+        <th>Unit Type</th>
+        <th>1 Bedroom</th>
+        <th>2 Bedroom</th>
+        <th>3 Bedroom</th>
+        <th>Other</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody id="transTbody">
+        <tr>
+          <td>
+            Unit Alert Thresholds
+          </td>
+          <td><input type="textbox" name="1bdUnit" value="10" onlynumbers maxlength="4" id="1bdUnit" #bedone class="unitBox"/>kWh</td>
+          <td><input type="textbox" name="2bdUnit" value="10" onlynumbers maxlength="4" id="2bdUnit" #bedtwo class="unitBox"/>kWh</td>
+          <td><input type="textbox" name="3bdUnit" value="10" onlynumbers maxlength="4" id="3bdUnit" #bedthree class="unitBox"/>kWh</td>
+          <td><input type="textbox" name="otherUnit" value="10" onlynumbers maxlength="4" id="otherUnit" #other class="unitBox"/>kWh</td>
+          <td><a (click)="applyToAll()" class="button blue">Apply to All</a></td>
+        </tr>
+    </tbody>
+  </table>
+</div>

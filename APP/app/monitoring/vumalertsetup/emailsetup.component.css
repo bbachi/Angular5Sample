@@ -1,0 +1,9 @@
+.btndisabled {
+    background-color: grey;
+    border-bottom: 5px solid grey;
+    cursor: not-allowed;
+}
+
+.mrgbtm30{
+    margin-bottom: 30px;
+}

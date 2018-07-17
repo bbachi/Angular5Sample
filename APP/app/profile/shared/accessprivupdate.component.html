@@ -1,0 +1,30 @@
+<ng-container *ngIf="isUpdateUserDtls && !isStartStop && hierarchyType == 'PROP'">
+  <div *ngIf="editingDone">
+    <span>{{billingEnabled?'Yes':'No'}}</span>
+    <span (click)="onEdit(unit)" class="editIcon"></span>
+  </div>
+  <div *ngIf="editing">
+    <input id="billing{{bpNumber}}" type="checkbox" [checked]="billingEnabled" #billing name="paybill">
+    <label class="checkbox-inline" for="billing{{bpNumber}}">
+       <span class="gmeCheckbox"></span>
+       <span class="">Pay Bill</span>
+    </label>
+    <span (click)="onCancel()" class="cancelAllIcon"></span>
+    <span (click)="onSave(billing,'B',startEnabled)" class="saveAllIcon"></span>
+  </div>
+</ng-container>
+<ng-container *ngIf="isUpdateUserDtls && isStartStop && hierarchyType == 'PROP'">
+  <div *ngIf="editingDone">
+    <span>{{startEnabled?'Yes':'No'}}</span>
+    <span (click)="onEdit(unit)" class="editIcon"></span>
+  </div>
+  <div *ngIf="editing">
+    <input id="startstop{{bpNumber}}" type="checkbox" [checked]="startEnabled" #startStop name="startstop">
+    <label class="checkbox-inline" for="startstop{{bpNumber}}">
+       <span class="gmeCheckbox"></span>
+       <span class="">Start/Stop Service</span>
+    </label>
+    <span (click)="onCancel()" class="cancelAllIcon"></span>
+    <span (click)="onSave(startStop,'S',billingEnabled)" class="saveAllIcon"></span>
+  </div>
+</ng-container>

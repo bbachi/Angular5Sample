@@ -1,0 +1,13 @@
+<admin-user-searchby (onSearchClick)="onSearchUsersBy($event)"></admin-user-searchby>
+<loading-indicator *ngIf="(userList$ | async)?.isLoading"></loading-indicator>
+<admin-user-search-table
+  *ngIf="(userList$ | async)?.isLoadingSuccess"
+  [userList]="(userList$ | async)?.userList"
+  (onUserSelectEmitter)="onSelectUser($event)">
+</admin-user-search-table>
+<gme-error *ngIf="isUserNotSelectedForUpdate" errorMessage="Please select atleast one user to proceed."></gme-error>
+<gme-status-box [message]="message" [isSuccess]="isSuccess"></gme-status-box>
+<div *ngIf="(userList$ | async)?.userList?.length >0" id="buttonHolder" class="text-right">
+  <reset-password [fromPage]="fromPage" [user]="user" (resetPasswordSts)="resetPasswordStatus($event)"></reset-password>
+	<button class="blue" (click)="onUpdateUser()">{{buttonName}}</button>
+</div>

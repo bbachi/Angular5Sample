@@ -1,0 +1,49 @@
+<section id="contentWrapper">
+			<div>
+				<h1 class="pageHeader">Overview</h1>
+
+				<div class="mT3P">
+					<div class="split inlineBlock infoHolder">
+						<div class="subheader">Update Profile</div>
+						<div id="">
+							<div>Update my profile</div>
+						</div>
+						<div>
+							<a routerLink="/protected/customer/profile/ownprofile/update.htm">Update Profile</a>
+						</div>
+					</div>
+					<div class="split inlineBlock infoHolder">
+						<div class="subheader">Add user</div>
+						<div id="">
+						   <div>Establish access for a new user of Green Mountain's My Account</div>
+						</div>
+						<div>
+							<a *ngIf="!shouldDisableLink(webSecurityRole$ | async)" routerLink="/protected/customer/profile/adduser/info.htm">Add new user</a>
+							<p *ngIf="shouldDisableLink(webSecurityRole$ | async)">Cannot add user from portal.</p>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="mT3P">
+					<div class="split inlineBlock infoHolder">
+						<div class="subheader">Remove user</div>
+						<div id="">
+							<div>Remove a user's access to My Account</div>
+						</div>
+						<div>
+							<a routerLink="/protected/customer/profile/remove/search.htm">Remove an existing user</a>
+						</div>
+					</div>
+					<div class="split inlineBlock infoHolder">
+						<div class="subheader">Update user</div>
+						<div id="">
+							<div>Update the profile information for a user that already has access privileges</div>
+						</div>
+						<div>
+							<a routerLink="/protected/customer/profile/update/user.htm">Update user profile information</a>
+						</div>
+					</div>
+				</div>
+      </div>
+		</section>

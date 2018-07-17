@@ -1,0 +1,28 @@
+<gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+<div>
+  <table class="vacantUnitAlertTable" sortable-table (sorted)="onSorted($event)">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th sortable-column="address">Address</th>
+        <th sortable-column="esiid">ESI ID</th>
+        <th sortable-column="kwh">kWh</th>
+        <th sortable-column="threshold">Threshold</th>
+        <th sortable-column="consecuteDays">Consecutive Days on Report</th>
+        <th sortable-column="unitType">Unit Type</th>
+      </tr>
+    </thead>
+    <tbody id="transTbody">
+        <tr *ngFor="let report of cloneList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+          <td>{{report.date}}</td>
+          <td>{{report.address}}</td>
+          <td>{{report.esiid}}</td>
+          <td>{{report.kwh}}</td>
+          <td>{{report.threshold}}</td>
+          <td class="redText">{{report.consecuteDays}}</td>
+          <td>{{report.unitType}} Bedroom</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>

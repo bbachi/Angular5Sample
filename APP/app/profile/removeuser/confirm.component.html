@@ -1,0 +1,35 @@
+<section id="contentWrapper">
+	<div>
+		<h1 *ngIf="isSuccess" class="pageHeader">Remove User  Confirmation</h1>
+		<p *ngIf="isSuccess">The user was successfully removed from the system. Please print this page for your records.</p>
+		<h1 *ngIf="!isSuccess" class="pageHeader errorMsg">We're Unable to Process Your Request</h1>
+		<gme-error *ngIf="!isSuccess" errorMessage="Cannot perform remove user request now. Please try again later."></gme-error>
+		<div class="infoHolder mT3P">
+				<div class="subheader">Request Details</div>
+				<div class="greyLineSeperator">&nbsp;</div>
+				<field-name name="Submitted on" [value]="removeConfirm?.transDateAndTime"></field-name>
+				<field-name name="Transaction number" [value]="removeConfirm?.transactionNumber"></field-name>
+				<field-name name="Internal/External" [value]="removeConfirm?.webSecurityRole | usercategory"></field-name>
+				<field-name name="Security Role" [value]="removeConfirm?.webSecurityRole | securityrole"></field-name>
+				<field-name name="User Type" [value]="removeConfirm?.webSecurityRole | usertype"></field-name>
+				<field-name name="Name" [value]="name"></field-name>
+				<field-name name="Username" [value]="removeConfirm?.userName"></field-name>
+				<field-name name="Email address" [value]="removeConfirm?.email  | notprovided"></field-name>
+				<field-name name="Phone number" [value]="removeConfirm?.phoneNum | phoneformataddextn:removeConfirm?.phoneNumExtn"></field-name>
+				<field-name name="Alternate phone number" [value]="removeConfirm?.altPhoneNum  | phoneformataddextn:removeConfirm?.altPhoneNumExtn"></field-name>
+				<field-name name="Fax number" [value]="removeConfirm?.faxNum  | formatphone"></field-name>
+				<profile-access-privileges
+						*ngIf="!(profileService.isBrokerAmdin(removeConfirm?.webSecurityRole) || profileService.isBrokerAssociate(removeConfirm?.webSecurityRole))"
+						[startStopAce]="removeConfirm?.startStopAce"
+						[billingAce]="removeConfirm?.billingAce">
+				</profile-access-privileges>
+		</div>
+		<customer-associations
+				*ngIf="profileService.isUserHasAssociations(removeConfirm?.webSecurityRole)"
+				[removeUser]="true"
+				[securityRole]="removeConfirm?.webSecurityRole"
+				[customerList]="profileService.getRemoveUserCustomerList()">
+		</customer-associations>
+		<gme-print title="Remove User Confirmation"></gme-print>
+  </div>
+</section>

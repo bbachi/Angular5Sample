@@ -1,0 +1,37 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Remove User - Verify Removal</h1>
+		<p>Please verify that you would like to remove this user.</p>
+		<div class="infoHolder mT3P">
+			<field-name name="Internal/External"
+				[value]="securityRole | usercategory"></field-name>
+			<field-name name="Security Role"
+				[value]="securityRole | securityrole"></field-name>
+			<field-name name="User Type" [value]="securityRole | usertype"></field-name>
+			<field-name name="Name" [value]="name"></field-name>
+			<field-name name="Phone number"
+				[value]="phoneNumber | phoneformataddextn:phoneExtn"></field-name>
+			<field-name name="Alternate phone number"
+				[value]="altPhoneNumber | phoneformataddextn:altPhoneExt"></field-name>
+			<field-name name="Fax number" [value]="faxNumber | formatphone"></field-name>
+			<field-name name="Email address" [value]="email | notprovided"></field-name>
+			<field-name name="Username" [value]="user.userName"></field-name>
+			<profile-access-privileges
+				*ngIf="!(profileService.isBrokerAmdin(securityRole) || profileService.isBrokerAssociate(securityRole))"
+				[startStopAce]="user.startStopAce"
+				[billingAce]="user.billingAce">
+			</profile-access-privileges>
+		</div>
+		<customer-associations
+				*ngIf="profileService.isUserHasAssociations(securityRole)"
+				(accessPrivEvent)="onBrokerAccesspriv($event)"
+				[removeUser]="true"
+				[securityRole]="securityRole"
+				[customerList]="customerList">
+		</customer-associations>
+		<div id="buttonHolder" class="text-right">
+			<button class="black" (click)="onBack()" type="button">Back</button>
+			<button class="blue" (click)="onConfirm()">Continue</button>
+		</div>
+	</div>
+</section>

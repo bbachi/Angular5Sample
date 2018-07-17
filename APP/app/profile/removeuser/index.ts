@@ -1,0 +1,5 @@
+export { RemoveUserComponent } from './removeuser.component'
+export { RemoveUserVerifyComponent } from './verify.component'
+export { RemoveUserConfirmComponent } from './confirm.component'
+export { FieldNameComponent } from './fieldname.component'
+export { AccessprivlegesComponent } from './accesspriv.component'

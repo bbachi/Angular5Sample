@@ -1,0 +1,58 @@
+<section id="contentWrapper" >
+			<div id="printSectionId">
+				<confirm-info [isSuccess]="!confirmation?.error"></confirm-info>
+				<div class="infoHolder mT3P">
+							<request-details
+									*ngIf="!confirmation?.error"
+									[submittedOn]="confirmation?.transactionNumber"
+									[transactionId]="confirmation?.transDateAndTime">
+							</request-details>
+							<div>
+								<div class="label">Internal/External:</div>
+								<div class="data">External</div>
+							</div>
+							<div>
+								<div class="label">Security Role:</div>
+								<div class="data">{{securityRole | associatetype}}</div>
+							</div>
+							<div>
+								<div class="label">Name:</div>
+								<div class="data">{{user.firstName}} {{user.lastName}}</div>
+							</div>
+							<div>
+								<div class="label">Username:</div>
+								<div class="data">{{user.userName}}</div>
+							</div>
+							<div>
+								<div class="label">Email address:</div>
+								<div class="data">{{user.emailAddress}}</div>
+							</div>
+							<div>
+								<div class="label">Phone number:</div>
+								<div class="data">{{user.phoneNumber | formatphone}} {{user.phoneExtNumber | extn}}</div>
+							</div>
+							<div>
+								<div class="label">Alternate phone number:</div>
+								<div class="data">{{user.altPhoneNumber | formatphone}} {{user.altPhoneExtNumber | extn}}</div>
+							</div>
+							<div>
+								<div class="label">Fax number:</div>
+								<div class="data">{{user.faxNumber | formatphone}}</div>
+							</div>
+							<div *ngIf="showAccessPrivileges">
+								<div class="label">Access privileges:</div>
+								<div class="data">
+									<div>Transactional and report access:</div>
+									<div class="mL20" *ngIf="user.startStopAccess">- Able to request start/stop service</div>
+									<div class="mL20" *ngIf="user.payBillAccess">- Able to pay bills</div>
+								</div>
+							</div>
+				</div>
+				<customer-associations
+						[addUserConfirm]="true"
+						[securityRole]="securityRole"
+						[customerList]="customerList">
+				</customer-associations>
+				<gme-print title="Add User Confirmation"></gme-print>
+			</div>
+		</section>

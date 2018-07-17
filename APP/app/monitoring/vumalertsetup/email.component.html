@@ -1,0 +1,10 @@
+<div class="mT1P {{editing?'hide':''}}">
+  <label for="alertSetEmail1">Email {{index}}:</label> <div class="extrspace">{{inEmail | notprovided}}</div>
+  <a class="button" (click)="onEmailEdit()">Edit</a>
+</div>
+<div class="mT1P {{editing?'':'hide'}}">
+  <label for="alertSetEmail1">Email {{index}}:</label>
+  <input type="text" value={{inEmail}} name="alertSetEmail1" #email/>
+  <a class="button black textBoxButton" (click)="onEmailCancel()">Cancel</a>
+  <a class="button blue textBoxButton" (click)="onEmailSave()">Save</a>
+</div>

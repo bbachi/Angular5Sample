@@ -1,0 +1,27 @@
+<p>{{text}}</p>
+<div class="">
+    <div id="regionsection">
+      <gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+      <div id="tableHolder" *ngIf="associates?.length > 0">
+        <table id="propertyTbl" sortable-table (sorted)="onSorted($event)">
+          <thead>
+            <tr>
+              <th sortable-column="lastName">Name</th>
+              <th>{{webSecurityRole == 'E_Broker_BRK_ADM'?'':'Access Privileges'}}</th>
+            </tr>
+          </thead>
+          <tbody id="transTbody">
+              <tr *ngFor="let assc of associates; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+                <td>
+                  <a (click)="onUser(assc.userName)">{{assc.lastName}}, {{assc.firstName}}</a>
+                </td>
+                <td>
+                  <associate-access-privileges *ngIf="webSecurityRole != 'E_Broker_BRK_ADM'" [startStopAce]="assc.startStopAce" [billingAce]="assc.billingAce"></associate-access-privileges>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+    </div>
+</div>

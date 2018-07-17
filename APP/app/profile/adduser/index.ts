@@ -1,0 +1,5 @@
+export { AddUserComponent } from './adduser.component'
+export { AddUserVerifyComponent } from './adduserverify.component'
+export { AddUserConfirmComponent } from './adduserconfirm.component'
+export { RequestDetailsComponent } from './requestdetails.component'
+export { ConfirmationInfoComponent } from './confirminfo.component'

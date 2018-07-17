@@ -1,0 +1,20 @@
+<gme-status-box
+    *ngIf="status"
+    [isSuccess]="status"
+    [message]="message">
+</gme-status-box>
+<div id="vaccantUnitEmailSection" class="mT3P mrgbtm30">
+  <h2 class="subheader">Vacant Unit Monitor Set up</h2>
+  <div class="mT1P">
+    <input type="checkbox" (click)="onRecieveCheckBox($event.target)" [checked]="vumEmailStatus" id="setEmailAlert" name="setEmailAlert" value="setEmailAlert">
+    <label class="checkbox-inline" for="setEmailAlert">
+      <span class="gmeCheckbox"></span>
+      I would like to receive the Vacant Unit Monitor Email at the following email addresses:
+    </label>
+  </div>
+  <vum-email (emailOut)="emailUpdated($event)" [inEmail]="vumEmail.email1" index="1"></vum-email>
+  <vum-email (emailOut)="emailUpdated($event)" [inEmail]="vumEmail.email2" index="2"></vum-email>
+  <div class="mT1P">
+    <button (click)="onConfirm()" [disabled]="!btndisabled" [ngClass]="{'btndisabled': !btndisabled}" type="button">Confirm</button>
+  </div>
+</div>

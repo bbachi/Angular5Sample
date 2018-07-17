@@ -1,0 +1,19 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Vacant Unit Daily Report</h1>
+		<vum-find-units (onChangeReportDate)="onChangeReportDate($event)"></vum-find-units>
+		<vum-daily-report-table *ngIf="(dailyReportList$ | async)?.length >0; else errResult" [dailyReportList]="dailyReportList$ | async"></vum-daily-report-table>
+		<ng-template #errResult>
+				<gme-error *ngIf="(dailyReportList$ | async)?.length ==0; else loading" errorMessage="No daily usage found for this date. For assistance, please call Customer Care at 800-273-2135."></gme-error>
+				<ng-template #loading>
+					<loading-indicator></loading-indicator>
+				</ng-template>
+		</ng-template>
+
+		<div id="buttonHolder" class="text-right">
+			<gme-print title="Vacant Unit Alert Daily Report"></gme-print>
+			<gme-csv *ngIf="(dailyReportList$ | async)?.length >0" [csvList]="dailyReportList$ | async" [headers]="csvHeaders" [name]="csvName"></gme-csv>
+		</div>
+		<message></message>
+ </div>
+</section>

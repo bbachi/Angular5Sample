@@ -1,0 +1,11 @@
+<div class="mT3P">
+  <div id="searchAreaHolder">
+    <div class="inlineBlock">
+      <label for="searchBy" class="label">Find Units:</label>
+      <select id="searchBy" name="searchBy" (change)="onDateChange($event)">
+        <option *ngFor="let date of dates;" value={{date}}>{{date}}</option>
+      </select>
+    </div>
+  </div>
+  <p>*Vacant units on the report for more than one day</p>
+</div>

@@ -1,0 +1,22 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Remove User</h1>
+		<ng-container *ngIf="showAdminSearchPage">
+			<admin-user-search fromPage="REMOVE_PAGE" (onContinueClick)="onUserDetails($event)"></admin-user-search>
+		</ng-container>
+	
+		<ng-container *ngIf="!showAdminSearchPage">
+			<loading-indicator *ngIf="(associates$ | async).isLoading"></loading-indicator>
+			<associates-list
+					 *ngIf="(associates$ | async)?.isLoadingSuccess && (associates$ | async)?.associates.length > 0; else error;"
+					 fromPage="REMOVE_PAGE"
+					 [associates]="(associates$ | async)?.associates"
+					 [webSecurityRole]="webSecurityRole"
+					 (onUserClick)="onUserDetails($event)">
+			</associates-list>
+			<ng-template #error>
+				<gme-error *ngIf="(associates$ | async)?.isLoadingSuccess" errorMessage="There are no associates to display."></gme-error>
+			</ng-template>
+		</ng-container>
+	</div>
+</section>

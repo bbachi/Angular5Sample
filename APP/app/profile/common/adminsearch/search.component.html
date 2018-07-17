@@ -1,0 +1,28 @@
+<gme-error *ngIf="isFormInValid" errorMessage="To continue, please enter last name to search."></gme-error>
+<div class="mT3P">
+	<div id="searchAreaHolder">
+		<div class="inlineBlock">
+			<label for="searchBy" class="label">Search Users by Last Name:</label>
+			<input type="text" [(ngModel)]="searchVal" class="mrgnright3" name="searchVal" id="searchVal"/>
+			<select id="searchBy" (change)="onUserTypeChange($event.target.value)" class="mrgnright3" name="searchBy">
+				<option value="NA:ALL">All</option>
+				<option value="NA:E">All External</option>
+				<option value="BRK_ADM:E">External - Broker</option>
+				<option value="BRK_ASC:E">External - Broker Associate</option>
+
+				<option value="PS:E">External - Customer Associate</option>
+				<option value="PO:E">External - Customer Admin - Property Owner</option>
+				<option value="PM:E">External - Customer Admin - Property Manager</option>
+				<option value="OA:E">External - Read-only</option>
+				<option value="NA:I">All Internal</option>
+				<option value="EMA:I">Internal - Account Executive</option>
+				<option value="EMM:I">Internal - Sales Executive</option>
+				<option value="OPS_MGR:I">Internal - Admin</option>
+				<option value="OPS_REP:I">Internal - Operations Representative</option>
+				<option value="IT:I">Internal - Read-only</option>
+				<!--<option value="OWN:I">Own Profile</option> -->
+			</select>
+			<button class="searchBtn" (click)="onSearch()" type="button">Search &gt;</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div id="divid">
+  <div *ngIf="editingDone">
+    <div class="label">Alternate phone number:</div>
+    <div class="data">{{displayPhoneNum}}</div>
+    <div class="inlineBlock width40Per text-right"><a (click)="onEdit()" class="edit">Edit</a></div>
+    </div>
+    <div class="inlineBlock" *ngIf="editing">
+      <div class="inlineBlock">
+        <label for="altPhoneNumber">Alternate phone number</label>
+        <input type="text" maxlength="10" name="altPhoneNumber" [(ngModel)]="newAltPhoneNumber" value={{newAltPhoneNumber}}/>
+      </div>
+      <div class="inlineBlock mL20">
+        <label for="extn">Extn</label>
+        <input type="text" maxlength="4" name="extn" [(ngModel)]="newAltPhoneExtn" value={{newAltPhoneExtn}}/>
+      </div>
+      <div class="inlineBlock">
+        <a (click)="onSave()">Save</a>
+        <a (click)="onCancel()" class="mL20">Cancel</a>
+      </div>
+  </div>
+</div>

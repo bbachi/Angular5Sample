@@ -1,0 +1,40 @@
+<gme-modal id="single-edit-vum-modal">
+  <gme-error *ngIf="isError" errorMessage="Unit Threshold should not be empty."></gme-error>
+  <h1 class="b">Update Vacant Unit Alert Thresholds</h1>
+  <div class="infoHolder">
+    <div>
+      <div class="label">Service Address</div>
+      <div class="data">{{unit?.streetNum}} {{unit?.streetName}}<br/>{{unit?.city}}, {{unit?.state}} {{unit?.zipcode}}</div>
+    </div>
+  </div>
+  <div class="infoHolder">
+    <div>
+      <div class="label">ESIID</div>
+      <div class="data">{{unit?.esiid}}</div>
+    </div>
+  </div>
+  <div class="infoHolder">
+    <div>
+      <div class="label">Unit Number</div>
+      <div class="data">{{unit?.unitNumber}}</div>
+    </div>
+  </div>
+  <p>You can setup a threshold amount for this unit below. If a unit type exceeds the threshold you specified, it will appear in the daily Vacant Unit Alert report and email</p>
+  <div class="inlineBlock">
+    <label for="searchBy" class="label">Unit Type</label>
+    <select id="searchBy" #unitType name="searchBy">
+      <option value="1">1 Bedroom</option>
+      <option value="2">2 Bedroom</option>
+      <option value="3">3 Bedroom</option>
+      <option value="0">Others</option>
+    </select>
+  </div>
+  <div class="inlineBlock right">
+    <label for="searchBy" class="label">Unit Threshold</label>
+    <input type="textbox" name="unitThreshold" #unitThreshold value={{unit?.unitThreshold}} onlynumbers maxlength="4" class="unitBox"/>kWh
+  </div>
+  <div id="buttonHolder" class="text-right">
+      <button class="black" (click)="onCancel('single-edit-vum-modal')" type="button">Cancel</button>
+      <button class="blue" (click)="onUpdate('single-edit-vum-modal')">Update</button>
+  </div>
+</gme-modal>

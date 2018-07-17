@@ -1,0 +1,27 @@
+<section id="contentWrapper">
+	<div *ngIf="vumData?.vumEmail; else loaing">
+		<h1 class="pageHeader">Vacant Unit Alert Set Up</h1>
+		<vum-email-setup
+				(emailPrefEvent)="updateEmailPreference($event)"
+				[vumEmail]="vumData?.vumEmail"
+				[status]="updateEmailStatus"
+				[message]="statusMessage">
+		</vum-email-setup>
+		<div *ngIf="vumData?.unitList?.length > 0; else showError">
+			<vum-set-threshold (applyToAllEvnt)="applyToAll($event)"></vum-set-threshold>
+			<vum-manage-threshold
+				(updateVUMESIIDAttribute)="updateVUMESIIDAttribute($event)"
+				(updateVUMESIIDAttributes)="updateVUMESIIDAttributes($event)"
+				[updateStatus]="updateStatus"
+				[unitList]="vumData?.unitList">
+			</vum-manage-threshold>
+		</div>
+		<ng-template #showError>
+				<gme-error errorMessage="There are no units found for this property."></gme-error>
+		</ng-template>
+
+	</div>
+	<ng-template #loaing>
+			<loading-indicator></loading-indicator>
+	</ng-template>
+</section>

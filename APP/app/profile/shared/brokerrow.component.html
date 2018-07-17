@@ -1,0 +1,47 @@
+<td [ngClass]="{'mrgleft25':customer.hierarchyType == 'REGN', 'mrgleft50':customer.hierarchyType == 'PROP'}">
+  <span
+     [ngClass]="{'brkcollapsedLink':(customer.hierarchyType == 'MGMT' && isMgmtLinkCollapsed),
+       'brkexpandedLink':(customer.hierarchyType == 'MGMT' && !isMgmtLinkCollapsed)}"
+     (click)="toggleMnmtBrokerLink()">
+   </span>
+   <span
+      [ngClass]="{'brkcollapsedLink':(customer.hierarchyType == 'REGN' && isRegntLinkCollapsed),
+        'brkexpandedLink':(customer.hierarchyType == 'REGN' && !isRegntLinkCollapsed)}"
+      (click)="toggleRegnBrokerLink()">
+    </span>
+   {{customer.bpName}}
+</td>
+<td>{{customer.bpNumber}}</td>
+<td>{{customer.strBPAddress}}</td>
+<td *ngIf="addUserVerify || addUserConfirm || removeUser">
+  <broker-access-priv
+       [bpNumber]="customer.bpNumber"
+       [addUserConfirm]="addUserConfirm"
+       [addUserVerify]="addUserVerify"
+       [removeUser]="removeUser"
+       [hierarchyType]="customer.hierarchyType"
+       [startEnabled]="customer.startEnabled"
+       [billingEnabled]="customer.billingEnabled"
+       (accessPrivEvent)="onBrokerAccesspriv($event)">
+   </broker-access-priv>
+</td>
+<td *ngIf="isUpdateUserDtls">
+  <broker-access-priv-update
+       [bpNumber]="customer.bpNumber"
+       [isUpdateUserDtls]="isUpdateUserDtls"
+       [hierarchyType]="customer.hierarchyType"
+       [startEnabled]="customer.startEnabled"
+       [billingEnabled]="customer.billingEnabled"
+       (accessPrivEvent)="onBrokerAccesspriv($event)">
+   </broker-access-priv-update>
+</td>
+<td *ngIf="isUpdateUserDtls">
+  <broker-access-priv-update
+       [bpNumber]="customer.bpNumber"
+       [isUpdateUserDtls]="isUpdateUserDtls"
+       [hierarchyType]="customer.hierarchyType"
+       [startEnabled]="customer.startEnabled"
+       [billingEnabled]="customer.billingEnabled"
+       (accessPrivEvent)="onBrokerAccesspriv($event)">
+   </broker-access-priv-update>
+</td>

@@ -1,0 +1,20 @@
+<ng-container *ngIf="addUserVerify">
+  <div *ngIf="hierarchyType == 'PROP'">
+    <input id="billing{{bpNumber}}" type="checkbox" [checked]="billingEnabled" (click)="onPayBillAce($event)" name="startstop">
+    <label class="checkbox-inline" for="billing{{bpNumber}}">
+       <span class="gmeCheckbox"></span>
+       <span class="">Pay Bill</span>
+    </label>
+    <input id="startstop{{bpNumber}}" type="checkbox" [checked]="startEnabled" (click)="onStartStopAce($event)" name="paybill">
+    <label class="checkbox-inline" for="startstop{{bpNumber}}">
+       <span class="gmeCheckbox"></span>
+       <span class="">Start/Stop Service</span>
+   </label>
+  </div>
+</ng-container>
+<ng-container *ngIf="addUserConfirm || removeUser">
+  <div *ngIf="hierarchyType == 'PROP'">
+    <p>Pay Bill:{{billingEnabled?'Yes':'No'}}</p>
+    <p>Start/Stop Service:{{startEnabled?'Yes':'No'}}</p>
+  </div>
+</ng-container>
