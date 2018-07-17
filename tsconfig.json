@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "removeComments": true,
+        "noImplicitAny": true,
+        "preserveConstEnums": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5"
+    },
+    "exclude": [
+        "node_modules",
+        "GMESSAPP"
+    ], 
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker": true,
+        "useWebpackText": true,
+        "reportFiles": ["src/**/*.{ts,tsx}"]
+  }
+
+}

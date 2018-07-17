@@ -1,0 +1,30 @@
+{
+    "port":"3010",
+    "numberOfProcess":"2",
+    "fileLocation":"/apps01/logs/nodeJS/gmeSSApp/gmeSSApp.log",
+    "rollingDatePattern":"yyyy-MM-dd",
+    "baseRestUrl":"http://txaixsexbls04:9083/BMFSSWS/REST",
+    "baseNRGRestEmailUrl":"http://stg1-ws.nrgenergy.com/NRGREST/rest/",
+    "setupPasswordUrl":"https://stg1-www.businessportal.greenmountain.com/gmeSSApp/public/passwordsetup.htm",
+    "gmessHostInfo":"https://stg1-www.businessportal.greenmountain.com/",
+    "contentUrl":"http://stg1-ws.nrgenergy.com/sdlapi",
+    "pciLogoutUrl":"https://stg1-www.businessportal.greenmountain.com/",
+    "serverPath":"/gmeSSApp",
+    "ui":{
+        "test": false,
+        "local": true,
+        "dev": false,
+        "stage": false,
+        "production": false,
+        "contextRoot": "/gmeSSApp",
+        "apiRoot": "/portalAPI",
+        "logoutURL":"/gmeSSApp/logout.htm",
+        "customerCareEmail": "bbachin1@reliant.com",
+        "idleTimeOutInSec" : 840,
+        "timeOutInSec" : 900,
+        "downloadRestUrl" : "http://txaixsexbls04:9083/BMFSSWS/REST/form/getpdf/",
+        "downloadInvoiceUrl" : "http://txaixsexbls04:9083/BMFSSWS/REST/payment/viewbillpdf/",
+        "gmeHostInfo" : "http://localhost:4200",
+        "pciHostInfo" : "http://localhost:8095"
+    }
+}

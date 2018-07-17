@@ -1,0 +1,30 @@
+{
+    "port":"3010",
+    "numberOfProcess":"2",
+    "fileLocation":"/apps01/logs/nodeJS/gmeSSApp/gmeSSApp.log",
+    "rollingDatePattern":"yyyy-MM-dd",
+    "baseRestUrl":"http://txaixebxindxp01:13180/BMFSSWS/REST",
+    "baseNRGRestEmailUrl":"http://ws.nrgenergy.com/NRGREST/rest/",
+    "setupPasswordUrl":"https://www.businessportal.greenmountain.com/gmeSSApp/public/passwordsetup.htm",
+    "gmessHostInfo":"https://www.businessportal.greenmountain.com/",
+    "contentUrl":"http://ws.nrgenergy.com/sdlapi",
+    "pciLogoutUrl":"https://www.businessportal.greenmountain.com/",
+    "serverPath":"/gmeSSApp",
+    "ui":{
+        "test": false,
+        "local": false,
+        "dev": false,
+        "stage": false,
+        "production": true,
+        "contextRoot": "/gmeSSApp",
+        "apiRoot": "/portalAPI",
+        "logoutURL":"https://www.businessportal.greenmountain.com",
+        "customerCareEmail": "vip@greenmountain.com",
+        "idleTimeOutInSec" : 840,
+        "timeOutInSec" : 900,
+        "downloadRestUrl" : "http://txaixebxindxp02:13180/BMFSSWS/REST/form/getpdf/",
+        "downloadInvoiceUrl" : "http://txaixebxindxp02:13180/BMFSSWS/REST/payment/viewbillpdf/",
+        "gmeHostInfo" : "https://www.businessportal.greenmountain.com",
+        "pciHostInfo" : "https://pay.businessportal.greenmountain.com"
+    }
+}
