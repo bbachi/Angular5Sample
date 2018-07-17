@@ -1,0 +1,13 @@
+@media print { 
+ /* All your print styles go here */
+ #header, #footer, #nav,.sublinks,.quickLinks,.selectedInfosec,#progressBarSec,.printIconHolder,#buttonHolder { display: none !important; } 
+ #contentWrapper{
+ 	margin-top:20px;
+ }
+.logo 
+{
+	left:0;
+	padding-left: 5%;
+}
+ 
+}

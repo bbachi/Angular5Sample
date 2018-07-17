@@ -1,0 +1,66 @@
+/************** Table Styles **************/
+table
+{
+
+    width: 100%;
+    border: 2px solid #EEEEEE;
+    text-align:left;
+	border-spacing: 0;
+    border-collapse: collapse;
+
+}
+thead tr th
+{
+	background-color:#FAFAFA;
+	color:#000;
+	text-align:left;
+
+
+}
+thead tr th,table tr td
+{
+	height: 30px;
+    padding: 10px;
+    vertical-align: middle;
+
+
+}
+table tr td
+{
+	border-bottom:2px solid #EEEEEE;
+}
+tr.even
+{
+	background-color:#FAFAFA;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+table.borderTable
+{
+	border-collapse: collapse;
+}
+table.borderTable tr td
+{
+	border:2px solid #EEEEEE;
+	padding:20px 10px;
+}
+table.borderTable thead tr th,table.borderTable thead
+{
+		background-color:#EEEEEE;
+		color:#000;
+		font-weight:normal;
+}
+td.textLeft
+{
+	text-align:left;
+}
+table.lastColumnRight tr td:last-child,table.lastColumnRight thead tr th:last-child
+{
+	text-align:right;
+}
+table.actionTable tr
+{
+	margin-left:2%;
+}
