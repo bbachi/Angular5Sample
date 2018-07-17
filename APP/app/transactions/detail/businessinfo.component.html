@@ -1,0 +1,39 @@
+<div class="mT3P">
+  <div class="split inlineBlock infoHolder">
+    <div class="subheader">Business Information</div>
+    <div class="greyLineSeperator">&nbsp;</div>
+    <div>
+      <div class="label">Contact Address:</div>
+      <div class="data">{{businessInfo.addr.streetNum}} {{businessInfo.addr.streetName}}<br/>
+        {{businessInfo.addr.city}}, {{businessInfo.addr.state}} {{businessInfo.addr.zipcode}}</div>
+    </div>
+    <div>
+      <div class="label">Tax/Federal ID number:</div>
+      <div class="data">{{businessInfo.fedTaxId}}</div>
+    </div>
+    <div>
+      <div class="label">Language Preference:</div>
+      <div class="data">{{businessInfo.languagePref}}</div>
+    </div>
+  </div>
+  <div class="split inlineBlock infoHolder">
+    <div class="subheader">Requestor Contact Information</div>
+    <div class="greyLineSeperator">&nbsp;</div>
+    <div>
+      <div class="label">Name:</div>
+      <div class="data">{{businessInfo.firstName}} {{businessInfo.lastName}}</div>
+    </div>
+    <div>
+      <div class="label">Phone number:</div>
+      <div class="data">{{businessInfo.phoneNumber | formatphone}}</div>
+    </div>
+    <div>
+      <div class="label">Fax number:</div>
+      <div class="data">{{businessInfo.faxNumber | formatphone}}</div>
+    </div>
+    <div>
+      <div class="label">Email Address:</div>
+      <div class="data">{{businessInfo.email}}</div>
+    </div>
+  </div>
+</div>

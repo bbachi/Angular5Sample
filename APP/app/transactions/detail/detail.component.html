@@ -1,0 +1,13 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Transaction Details</h1>
+		<div class="infoHolder mT3P">
+				<txn-request-details [txnDtl]="txnDtl"></txn-request-details>
+				<txn-login *ngIf="txnDtl?.txnType == 'Login'" [txnDetail]="txnDtl"></txn-login>
+		</div>
+		<txn-start-service *ngIf="txnDtl?.txnType == 'Start Service'" [propertyName]="propertyName" [txnDetail]="txnDtl"></txn-start-service>
+		<txn-stop-service *ngIf="txnDtl?.txnType == 'Stop Service'" [propertyName]="propertyName" [txnDetail]="txnDtl"></txn-stop-service>
+		<txn-business-info [businessInfo]="businessInfo"></txn-business-info>
+		<gme-print title="Transaction Details"></gme-print>
+  </div>
+</section>

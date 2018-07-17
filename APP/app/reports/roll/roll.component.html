@@ -1,0 +1,17 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Roll Report</h1>
+		<roll-search (onApplyClick)="onApply($event)"></roll-search>
+		<roll-info [propertyName]="propertyName" [reportExecutionDate]="reportExecutionDate" [reportPeriod]="reportPeriod"></roll-info>
+		<roll-table *ngIf="(reportList$ | async)?.length > 0; else showErrResult" [reportList]="reportList$ | async" [rollType]="rollType"></roll-table>
+		<ng-template #showErrResult>
+				<gme-error *ngIf="(reportList$ | async)?.length ==0; else loading" errorMessage="No Data available for the selected report type."></gme-error>
+				<ng-template #loading>
+					<loading-indicator></loading-indicator>
+				</ng-template>
+		</ng-template>
+		<div id="buttonHolder" class="text-right">
+			<gme-csv *ngIf="(reportList$ | async)?.length > 0" [csvList]="reportList$ | async" [name]="csvName" [headers]="csvHeaders"></gme-csv>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,38 @@
+<div class="greyLineSeperator mT3P">&nbsp;</div>
+	<div class="infoHolder mT3P">
+			<div class="subheader">Start Service Meter Address</div>
+			<div class="greyLineSeperator">&nbsp;</div>
+			<div>
+				<div class="label">Property:</div>
+				<div class="data">{{propertyName}}</div>
+			</div>
+			<div>
+				<div class="label">Service Address:</div>
+				<div class="data">{{txnDetail.serviceAddress}}</div>
+			</div>
+  </div>
+
+	<div class="mT3P">
+			<gme-pagination></gme-pagination>
+			<div id="tableHolder">
+				<table id="startTransactionTbl">
+					<thead>
+						<tr>
+							<th>Unit</th>
+							<th>ESI ID</th>
+							<th>Start Service Effective Date</th>
+							<th>Addt'l Fee for Priority Move-In</th>
+						</tr>
+					</thead>
+					<tbody id="transTbody">
+							<tr *ngFor="let esiid of txnDetail.esiidList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+								<td>{{esiid.strUnitNumber}}</td>
+								<td>{{esiid.esiid}}</td>
+								<td>{{esiid.selectedStartDate}}</td>
+								<td>{{esiid.priorityDateSelected == 'N'?'No':'Yes'}}</td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
+			<gme-pagination></gme-pagination>
+		</div>

@@ -1,0 +1,22 @@
+<section id="contentWrapper">
+	<!-- ================================= Actual Page Content ============================================= -->
+	<div>
+		<h1 class="pageHeader">Transactions</h1>
+		<txnlist-search (onApplyClick)="onApply($event)"></txnlist-search>
+		<loading-indicator *ngIf="(txnList$ | async)?.isLoading; else showResult"></loading-indicator>
+		<ng-template #showResult>
+			<txn-table
+					*ngIf="(txnList$ | async)?.isLoadingSuccess && (txnList$ | async)?.transactions?.length > 0; else showError"
+					(txnDetailEvent)="onTransactionDetailId($event)"
+					[txnList]="(txnList$ | async)?.transactions">
+			</txn-table>
+			<div *ngIf="(txnList$ | async)?.isLoadingSuccess && (txnList$ | async)?.transactions?.length > 0;" id="buttonHolder" class="text-right">
+				<gme-csv [csvList]="(txnList$ | async)?.transactions" [name]="csvName" [headers]="csvHeaders"></gme-csv>
+			</div>
+			<ng-template #showError>
+					<gme-error errorMessage="Sorry, we couldn’t find any transactions for this time period."></gme-error>
+			</ng-template>
+		</ng-template>
+	</div>
+	<!-- ================================= Actual Page Content end ========================================= -->
+</section>

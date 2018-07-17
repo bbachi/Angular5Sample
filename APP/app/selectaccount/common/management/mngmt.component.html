@@ -1,0 +1,23 @@
+<div id="managementsection">
+	<h3>Management Companies</h3>
+	<div id="tableHolder">
+		<table id="propertyTbl" sortable-table (sorted)="onSorted($event)">
+			<thead>
+				<tr>
+					<th sortable-column="bpName" sort-direction="asc">Name on Account</th>
+					<th sortable-column="bpNumber">Business Partner Number</th>
+					<th sortable-column="strBPAddress">Address</th>
+				</tr>
+			</thead>
+			<tbody id="transTbody">
+				<ng-container *ngFor="let mng of list; let i = index; let odd=odd; let even=even;">
+          <tr [ngClass]="{'odd':even,'even':odd}" *ngIf="mng.bpNumber != 'NO_MGMT'">
+            <td><a (click)="onManagement(mng.bpNumber)">{{mng.bpName}}</a></td>
+            <td>{{mng.bpNumber}}</td>
+            <td>{{mng.strBPAddress}}</td>
+          </tr>
+				</ng-container>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<section id="contentWrapper">
+	<div>
+		<h1 class="pageHeader">Vacancy Report</h1>
+		<vacancy-search (onApplyClick)="onApply($event)"></vacancy-search>
+		<vacancy-table *ngIf="isLoadingSuccess" [reportList]="reportList"></vacancy-table>
+		<loading-indicator *ngIf="isLoading"></loading-indicator>
+		<gme-error *ngIf="isLoadingFailure" errorMessage="No Data available for the selected report type."></gme-error>
+		<div id="buttonHolder" class="text-right">
+			<gme-csv *ngIf="reportList?.length > 0" [csvList]="reportList" [name]="csvName" [headers]="csvHeaders"></gme-csv>
+		</div>	
+	</div>
+</section>

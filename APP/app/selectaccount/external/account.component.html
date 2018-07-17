@@ -1,0 +1,35 @@
+<div id="pageBody">
+		<section id="contentWrapper">
+			<div>
+				<h1 class="pageHeader">Select Account</h1>
+				<sdl-message key="gmess_selectAccount_top_tctxt"></sdl-message>
+				<div class="">
+					<div class="mT3P">
+						<div id="searchAreaHolder">
+							<div class="inlineBlock">
+								<label for="searchBy" class="label">Find Units:</label>
+								<select id="searchBy" name="searchBy" (change)="onSearchBySelection($event)">
+										<option value="BP">Business Partner Account #</option>
+										<option value="AN">Account Name</option>
+										<option value="PN">Property Name</option>
+										<option value="TID">Tax ID</option>
+								</select>
+								<label for="searchVal" class="hide">Business Partner Account #</label>
+								<input type="text" maxlength="10" placeholder="" (change)="onSearchStringChange($event)" name="searchVal" id="searchVal"/>
+								<button class="searchBtn" type="button" (click)="search()">{{searchTitle}} &gt;</button>
+							</div>
+						</div>
+						<gme-error
+								*ngIf="isHierarchyNotFound"
+								errorMessage="No Hierarchy found for the search criteria.">
+						</gme-error>
+					</div>
+					<ng-container *ngIf="showResult">
+						<management *ngIf="mngBP" [mngList]="mngList" (onManagementClick)="onManagement($event)"></management>
+						<region *ngIf="regionBP" [regionList]="regionList" (onRegionClick)="onRegion($event)"></region>
+						<property *ngIf="propertyBP" [propertyList]="propertyList" (onPropertyClick)="onProperty($event)"></property>
+					</ng-container>
+				</div>
+			</div>
+		</section>
+  </div>

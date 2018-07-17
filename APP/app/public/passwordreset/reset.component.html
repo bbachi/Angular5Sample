@@ -1,0 +1,39 @@
+<div>
+	<h1 class="pageHeader">First Time User</h1>
+	<p>Enter your username so that we can identify your account.  This is the username you use to log in to your online account.</p>
+
+	<form name="firstTimeUserFrm" [formGroup]="resetForm" novalidate (ngSubmit)="passwordReset(resetForm.value)">
+		<div class="infoHolder mT3P">
+				<div class="infoHolder">
+						<div>
+							<div class="label">Username:</div>
+							<div class="data">{{userDetails?.userName}}</div>
+						</div>
+						<div>
+								<p>Your password must meet the following requirements.</p>
+								<ul>
+									<li>Minimum 7 characters</li>
+									<li>Use only numbers and letters</li>
+									<li>At least one uppercase letter</li>
+									<li>At least one number</li>
+									<li>Retype password to confirm the match</li>
+								</ul>
+						</div>
+				</div>
+				<div class="mT3P">
+						<label for="password">Password</label>
+						<input type="password" [ngClass]="{'bordercls':isResetFormNotValid}" formControlName="password" name="password" />
+				</div>
+				<div class="mT3P">
+						<label for="rePassword">Retype Password</label>
+						<input type="password" [ngClass]="{'bordercls':isResetFormNotValid}" formControlName="rePassword" name="rePassword"/>
+				</div>
+		</div>
+		<gme-error *ngIf="isResetFormNotValid" errorMessage="Password must match in both fields. Your password must meet the following criteria: Must contain at least 7 characters; Must include at least one uppercase and lowercase character; Must contain one number; Must not contain special characters (i.e. #, !)"></gme-error>
+		<div id="buttonHolder" class="text-right">
+			<!--<button class="black" type="button">Back</button> -->
+			<button  *ngIf="!updatingPassword" class="blue" type="submit">Continue</button>
+			<loading-indicator *ngIf="updatingPassword"></loading-indicator>
+		</div>
+	</form>
+</div>

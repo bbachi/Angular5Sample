@@ -1,0 +1,18 @@
+<div class="mT3P">
+  <div id="searchAreaHolder">
+    <div class="inlineBlock mR3P">
+      <label for="fromDate" class="label">From:</label>
+      <gme-datepicker [defaultDate]="fromDate" maxDate="0" (dateChange)="onDateChange($event,'from')"></gme-datepicker>
+    </div>
+    <div class="inlineBlock mR3P">
+      <label for="fromDate" class="label">To:</label>
+      <gme-datepicker [defaultDate]="toDate" maxDate="0" (dateChange)="onDateChange($event,'to')"></gme-datepicker>
+    </div>
+    <div class="inlineBlock">
+      <a (click)="onApply()" class="button textBoxButton blue">Apply</a>
+    </div>
+    <div class="inlineBlock mR3P">
+      <a (click)="clearDates()" class="button textBoxButton">Reset</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="mT3P">
+    <gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+    <div id="tableHolder">
+      <table id="transactionTbl" sortable-table (sorted)="onSorted($event)">
+        <thead>
+          <tr>
+            <th sortable-column="id">Transaction ID</th>
+            <th sortable-column="type">Type</th>
+            <th sortable-column="requestor">Requestor</th>
+            <th sortable-column="serviceAddress">Service Address</th>
+            <th sortable-column="unit">Unit</th>
+            <th sortable-column="submissionDate">Request Submission Date</th>
+          </tr>
+        </thead>
+        <tbody id="transTbody">
+            <tr *ngFor="let txn of txnList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+              <td><a (click)="onTransactionId(txn)">{{txn.id}}</a></td>
+              <td>{{txn.type}}</td>
+              <td>{{txn.requestor}}</td>
+              <td>{{txn.serviceAddress}}</td>
+              <td>{{txn.unit}}</td>
+              <td>{{txn.submissionDate}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+  </div>

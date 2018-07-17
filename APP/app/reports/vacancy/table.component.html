@@ -1,0 +1,26 @@
+<div class="mT3P">
+    <gme-pagination placement="top" [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+    <div id="tableHolder">
+      <table id="rollReportTbl" sortable-table (sorted)="onSorted($event)">
+        <thead>
+          <tr>
+            <th sortable-column="serviceAddress">Service Address</th>
+            <th sortable-column="unit">Unit</th>
+            <th sortable-column="changeDate">Change Date</th>
+            <th sortable-column="daysVacant">Days in Current State</th>
+            <th sortable-column="stateOfUnit">State of Unit</th>
+          </tr>
+        </thead>
+        <tbody id="transTbody">
+          <tr *ngFor="let report of reportList; let i = index; let odd=odd; let even=even;" [ngClass]="{ odd: even, even: odd }">
+            <td>{{report.serviceAddress}}</td>
+            <td>{{report.unit}}</td>
+            <td>{{report.changeDate}}</td>
+            <td>{{report.daysVacant}}</td>
+            <td>{{report.stateOfUnit}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <gme-pagination [totalSize]="totalSize" (pagerOut)="onPagination($event)"></gme-pagination>
+</div>
